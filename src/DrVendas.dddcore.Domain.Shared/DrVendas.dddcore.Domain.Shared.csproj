@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DrVendas.dddcore.Infra.CrossCutting\DrVendas.dddcore.Infra.CrossCutting.csproj" />
+  </ItemGroup>
+
+</Project>
