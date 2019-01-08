@@ -24,7 +24,7 @@ namespace DrVendas.dddcore.Domain.Entidades
             UFDeveSerPreenchida();
             UFDeveSerValida();
             CepDeveSerValido();
-            return !ListaErros.Any();
+            return !ListaErros.Any(); //Se a lista não esta vazia
         }
 
     }
