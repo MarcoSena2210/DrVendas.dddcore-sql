@@ -3,8 +3,7 @@ using Microsoft.Extensions.Configuration;
 using DrVendas.dddcore.Domain.Entidades;
 using DrVendas.dddcore.Infra.Data.Mappings;
 using System.IO;
-
-
+using DrVendas.dddcore.Domain.Entidades.AgregacaoPedido;
 
 namespace DrVendas.dddcore.Infra.Data.Context
 {

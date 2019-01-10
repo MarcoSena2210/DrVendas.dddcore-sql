@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DrVendas.dddcore.Domain.Entidades
+namespace DrVendas.dddcore.Domain.Entidades.AgregacaoPedido
 {
     public class Pedido : EntidadeBase
     {

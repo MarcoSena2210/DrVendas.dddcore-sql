@@ -1,4 +1,5 @@
 ﻿using DrVendas.dddcore.Domain.Entidades;
+using DrVendas.dddcore.Domain.Entidades.AgregacaoPedido;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

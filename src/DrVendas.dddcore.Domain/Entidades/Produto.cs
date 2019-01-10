@@ -1,4 +1,5 @@
-﻿using DrVendas.dddcore.Domain.Shared.Entidades;
+﻿using DrVendas.dddcore.Domain.Entidades.AgregacaoPedido;
+using DrVendas.dddcore.Domain.Shared.Entidades;
 using System.Collections.Generic;
 using System.Linq;
 

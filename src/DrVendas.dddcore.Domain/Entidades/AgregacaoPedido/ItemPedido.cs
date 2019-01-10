@@ -1,7 +1,7 @@
 ﻿using DrVendas.dddcore.Domain.Shared.Entidades;
 using System.Linq;
 
-namespace DrVendas.dddcore.Domain.Entidades
+namespace DrVendas.dddcore.Domain.Entidades.AgregacaoPedido
 { 
    public class ItemPedido : EntidadeBase
     {
