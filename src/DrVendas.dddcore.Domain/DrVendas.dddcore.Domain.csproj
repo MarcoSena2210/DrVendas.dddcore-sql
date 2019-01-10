@@ -8,4 +8,8 @@
     <ProjectReference Include="..\DrVendas.dddcore.Domain.Shared\DrVendas.dddcore.Domain.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Interfaces\Services\" />
+  </ItemGroup>
+
 </Project>
