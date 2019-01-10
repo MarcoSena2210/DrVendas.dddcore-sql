@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace DrVendas.dddcore.Domain.Entidades
 {
-    public class Produtos : EntidadeBase
+    public class Produto : EntidadeBase
     {
        
         public string Apelido { get; set; }
@@ -12,9 +12,13 @@ namespace DrVendas.dddcore.Domain.Entidades
         public string Descricao { get; set; }
         public decimal Valor { get; set; }
         public string Unidade { get; set; }
-        public int IdFornecedor { get; set; }
+        public int FornecedorId { get; set; }
 
- 
+        /* Propriedades de navegação-Um Produto pertence a um fornecedor
+         *                                               Um produto tem varios items de pedido  */
+        public virtual Fornecedor Fornecedor { get; set; }
+        public virtual ICollection<ItemPedido> ItensPedidos { get; set; }
+
         public override bool EstaConsistente()
         {
             ApelidoDeveSerPreenchido();
@@ -74,7 +78,7 @@ namespace DrVendas.dddcore.Domain.Entidades
 
         private void FornecedorDeveSerPreenchido()
         {
-            if (IdFornecedor == 0) ListaErros.Add("O campo fornecedor dever ser informado!");
+            if (FornecedorId == 0) ListaErros.Add("O campo fornecedor dever ser informado!");
         }
 
     }

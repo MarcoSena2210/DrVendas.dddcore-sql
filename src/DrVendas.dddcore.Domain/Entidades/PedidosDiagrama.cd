@@ -1,39 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="DrVendas.dddcore.Domain.Entidades.Cliente">
-    <Position X="1.25" Y="0.5" Width="1.5" />
+    <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Entidades\Clientes.cs</FileName>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Entidades\Cliente.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DrVendas.dddcore.Domain.Entidades.Fornecedores">
-    <Position X="8.25" Y="0.75" Width="1.5" />
+  <Class Name="DrVendas.dddcore.Domain.Entidades.Fornecedor">
+    <Position X="8.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Entidades\Fornecedores.cs</FileName>
+      <HashCode>AAAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entidades\Fornecedor.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DrVendas.dddcore.Domain.Entidades.ItemsPedido">
-    <Position X="4.25" Y="3.25" Width="1.5" />
+  <Class Name="DrVendas.dddcore.Domain.Entidades.ItemPedido">
+    <Position X="2.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAAAAAAAAAAAAAIgAAAgAAAAAAAAAAAAAEAAAA=</HashCode>
-      <FileName>Entidades\ItemsPedido.cs</FileName>
+      <HashCode>AAABAAAAAAAQAAEAAAAAAAMIgAAAAAAAgAMAAAAIAAE=</HashCode>
+      <FileName>Entidades\ItemPedido.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DrVendas.dddcore.Domain.Entidades.Pedidos">
-    <Position X="1.25" Y="2.5" Width="1.5" />
+  <Class Name="DrVendas.dddcore.Domain.Entidades.Produto">
+    <Position X="6.5" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAECAAAAAAAAAAIAAAAAAAAABAAAAAABAEAAAA=</HashCode>
-      <FileName>Entidades\Pedidos.cs</FileName>
+      <HashCode>AoABAAAAACABQAAgEEAoAACEAAAAAAAABAACQAEAAQA=</HashCode>
+      <FileName>Entidades\Produto.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DrVendas.dddcore.Domain.Entidades.Produtos">
-    <Position X="4.75" Y="0.5" Width="1.5" />
+  <Class Name="DrVendas.dddcore.Domain.Entidades.Pedido">
+    <Position X="4.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAAAAAAAAAgAAAIAAAEAAAAAAAACAAAAAEAAAA=</HashCode>
-      <FileName>Entidades\Produtos.cs</FileName>
+      <HashCode>QAABAAAACAAAAAAAABCAAAAAgAAAAAAQAAAEAAIAAQA=</HashCode>
+      <FileName>Entidades\Pedido.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="DrVendas.dddcore.Domain.Shared.Entidades.Pessoa" Collapsed="true">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
