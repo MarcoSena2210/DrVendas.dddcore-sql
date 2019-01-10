@@ -4,14 +4,16 @@ using DrVendas.dddcore.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DrVendas.dddcore.Infra.Data.Migrations
 {
     [DbContext(typeof(ContextEFSQLServer))]
-    partial class ContextEFSQLServerModelSnapshot : ModelSnapshot
+    [Migration("20190110155128_CriadoObeservacaoEValorTotalPedidoNaTabPedido")]
+    partial class CriadoObeservacaoEValorTotalPedidoNaTabPedido
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

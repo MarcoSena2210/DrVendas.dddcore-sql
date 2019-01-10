@@ -10,6 +10,8 @@ namespace DrVendas.dddcore.Domain.Entidades
         public DateTime DataPedido { get; set; }
         public DateTime? DataEntrega { get; set; }
         public int ClienteId { get; set; }
+        public string Observacao { get; set; }
+        public decimal ValorTotalPedido { get; set; }
         public virtual Cliente Cliente { get; set; }
         public virtual ICollection<ItemPedido> ItensPedidos { get; set; }
 
@@ -19,6 +21,8 @@ namespace DrVendas.dddcore.Domain.Entidades
             DataPedidoDeveSerPreenchida();
             DataPedidoDeveSerSuperiorOuIgualADataDoDia();
             DataEntregaDeveSerSuperiorOuIgualDataPedido();
+            ObservacaoDeveTerUmTamanhoLimite();
+            ValorTotalPedidoDeverSerSuperiorAZero();
             ClienteDeveSerPreenchido();
             return !ListaErros.Any();
         }
@@ -38,9 +42,26 @@ namespace DrVendas.dddcore.Domain.Entidades
             if (DataEntrega != null && DataEntrega < DataPedido) ListaErros.Add("Data da entrega deve ser superior a data do pedido");
         }
 
+        private void ObservacaoDeveTerUmTamanhoLimite()
+        {
+            if (!string.IsNullOrEmpty(Observacao) && Observacao.Length > 4000) ListaErros.Add("Campo observação deverá ter no máximo 4000 caracteres!");
+        }
+
+
+
+        private void ValorTotalPedidoDeverSerSuperiorAZero()
+        {
+            if (ValorTotalPedido <= 0) ListaErros.Add("O campo valor  total do pedido deve ser maior que zero!");
+        }
+
+
+
         private void ClienteDeveSerPreenchido()
         {
             if (ClienteId == 0) ListaErros.Add("Cliente deve ser informado!");
         }
+
+
+
     }
 }

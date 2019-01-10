@@ -17,6 +17,13 @@ namespace DrVendas.dddcore.Infra.Data.Mappings
             builder.Property(p => p.DataEntrega)
                 .HasColumnType("DateTime");
 
+            builder.Property(p => p.Observacao)
+             .HasColumnType("varchar(4000)");
+
+            builder.Property(p => p.ValorTotalPedido)
+             .HasColumnType("decimal")
+             .IsRequired();
+
             builder.HasOne(p => p.Cliente)
                 .WithMany(c => c.Pedidos)
                 .HasForeignKey(p => p.ClienteId);
