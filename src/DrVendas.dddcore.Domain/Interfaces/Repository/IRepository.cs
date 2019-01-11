@@ -10,7 +10,7 @@ namespace DrVendas.dddcore.Domain.Interfaces.Repository
         void Adicionar(TEntidade obj);
         void Atualizar(TEntidade obj);
         void Remover(TEntidade obj);
-
+        TEntidade ObterPorId(int id);
         IEnumerable<TEntidade> ObterTodos();
         IEnumerable<TEntidade> Buscar(Expression<Func<TEntidade, bool>> predicate);
     }

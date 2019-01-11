@@ -7,7 +7,7 @@ namespace DrVendas.dddcore.Domain.Interfaces.Repository.AgregacaoPedido
     {
         void AdicionarItensPedidos(ItemPedido item);
         void AtulizarItensPedidos(ItemPedido item);
-        void RemoverItensPedidosPedidos(ItemPedido item);
+        void RemoverItensPedidos(ItemPedido item);
         ItemPedido ObterItensPedidosPorId(int id);
         IEnumerable<ItemPedido> ObterItensPedido(int idpedido);
 
