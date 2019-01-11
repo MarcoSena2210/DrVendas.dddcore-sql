@@ -5,11 +5,11 @@ namespace DrVendas.dddcore.Domain.Interfaces.Repository.AgregacaoPedido
 {
     public interface IRepositoryPedido : IRepository<Pedido>
     {
-        void AdicionarItensPedidos(ItemPedido item);
-        void AtulizarItensPedidos(ItemPedido item);
-        void RemoverItensPedidos(ItemPedido item);
-        ItemPedido ObterItensPedidosPorId(int id);
-        IEnumerable<ItemPedido> ObterItensPedido(int idpedido);
+        void AdicionarItemPedido(ItemPedido item);
+        void AtulizarItemPedido(ItemPedido item);
+        void RemoverItemPedido(ItemPedido item);
+        ItemPedido ObterItemPedidoPorId(int id);
+        IEnumerable<ItemPedido> ObterItemPedido(int idpedido);
 
     }
 }

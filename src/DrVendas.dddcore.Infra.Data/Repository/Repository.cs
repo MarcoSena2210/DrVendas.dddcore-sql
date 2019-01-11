@@ -19,33 +19,33 @@ namespace DrVendas.dddcore.Infra.Data.Repository
                  Db = MeuContexto;
         }
 
-        public void Adicionar(TEntidade obj)
+        public virtual  void Adicionar(TEntidade obj)
         {
             DbSet.Add(obj);
         }
 
-        public void Atualizar(TEntidade obj)
+        public virtual void Atualizar(TEntidade obj)
         {
             DbSet.Update(obj);
         }
 
-        public void Remover(TEntidade obj)
+        public virtual void Remover(TEntidade obj)
         {
            DbSet.Remove(obj);
         }
 
-        public IEnumerable<TEntidade> ObterTodos()
+        public virtual IEnumerable<TEntidade> ObterTodos()
         {
             return DbSet.ToList();
         }
 
 
-        public TEntidade ObterPorId(int id)
+        public virtual TEntidade ObterPorId(int id)
         {
             return DbSet.AsNoTracking().FirstOrDefault(t => t.Id == id);
         }
 
-        public IEnumerable<TEntidade> Buscar(Expression<Func<TEntidade, bool>> predicate)
+        public  IEnumerable<TEntidade> Buscar(Expression<Func<TEntidade, bool>> predicate)
         {
             return DbSet.AsNoTracking().Where(predicate);
         }

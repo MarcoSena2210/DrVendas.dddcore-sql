@@ -12,11 +12,11 @@ namespace DrVendas.dddcore.Infra.Data.Mappings
             builder.HasKey(i => i.Id);
 
             builder.Property(p => p.ValorItem)
-               .HasColumnType("decimal")
+               .HasColumnType("decimal(10,2)")
                .IsRequired();
 
             builder.Property(p => p.ValorTotalItem)
-             .HasColumnType("decimal")
+             .HasColumnType("decimal(10,2)")
              .IsRequired();
 
             builder.HasOne(i => i.Pedido)

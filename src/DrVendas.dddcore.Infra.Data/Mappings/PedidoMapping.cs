@@ -22,12 +22,14 @@ namespace DrVendas.dddcore.Infra.Data.Mappings
              .HasColumnType("varchar(4000)");
 
             builder.Property(p => p.ValorTotalPedido)
-             .HasColumnType("decimal")
+             .HasColumnType("decimal(10,2)")
              .IsRequired();
 
             builder.HasOne(p => p.Cliente)
                 .WithMany(c => c.Pedidos)
                 .HasForeignKey(p => p.ClienteId);
+
+            builder.Ignore(p =>  p.QtdProdutos);
 
             builder.Ignore(p => p.ListaErros);
 

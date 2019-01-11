@@ -1,4 +1,5 @@
-﻿using DrVendas.dddcore.Domain.Entidades;
+﻿using Dapper;
+using DrVendas.dddcore.Domain.Entidades;
 using DrVendas.dddcore.Domain.Entidades.AgregacaoPedido;
 using DrVendas.dddcore.Domain.Interfaces.Repository;
 using DrVendas.dddcore.Domain.Interfaces.Repository.AgregacaoPedido;
@@ -6,6 +7,7 @@ using DrVendas.dddcore.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace DrVendas.dddcore.Infra.Data.Repository.AgregacaoPedido
 {
@@ -17,31 +19,105 @@ namespace DrVendas.dddcore.Infra.Data.Repository.AgregacaoPedido
 
         }
 
-        public void AdicionarItensPedidos(ItemPedido item)
+        public void AdicionarItemPedido(ItemPedido item)
         {
             Db.ItemPedido.Add(item);
         }
 
 
-        public void AtulizarItensPedidos(ItemPedido item)
+        public void AtulizarItemPedido(ItemPedido item)
         {
             Db.ItemPedido.Update(item);
         }
 
-        public void RemoverItensPedidos(ItemPedido item)
+        public void RemoverItemPedido(ItemPedido item)
         {
             Db.ItemPedido.Remove(item);
         }
 
-        public IEnumerable<ItemPedido> ObterItensPedido(int idpedido)
+        public override IEnumerable<Pedido> ObterTodos()
         {
-            return Db.ItemPedido.Where(it => it.PedidoId == idpedido).OrderBy(it => it.Produto.Nome);
+            StringBuilder query = new StringBuilder();
+            query.AppendLine(@"SELECT * FROM pedido P
+                               INNER JOIN clientes C ON p.ClienteId = C.Id 
+                               ORDER BY p.Id DESC");
+            var pedidos = Db.Database.GetDbConnection().Query<Pedido, Cliente, Pedido>(query.ToString(),
+                (p, c) =>
+                {
+                    p.Cliente = c;
+                    return p;
+                });
+
+            foreach (var item in pedidos)
+            {
+                var itens = ObterItemPedido(item.Id);
+                item.QtdProdutos = itens.Count();
+                item.ValorTotalPedido = itens.Sum(x => x.Produto.Valor);
+            }
+
+            return pedidos;
         }
 
-        public ItemPedido ObterItensPedidosPorId(int id)
+        public override Pedido ObterPorId(int id)
         {
-            return Db.ItemPedido.AsNoTracking().FirstOrDefault(i => i.Id == id);
-            
+            StringBuilder query = new StringBuilder();
+            query.AppendLine(@"SELECT * FROM pedido P
+                               INNER JOIN cliente C ON p.ClienteId = C.Id 
+                               WHERE P.ID=@uID");
+            var pedidos = Db.Database.GetDbConnection().Query<Pedido, Cliente, Pedido>(query.ToString(),
+                (p, c) =>
+                {
+                    p.Cliente = c;
+                    return p;
+                }, new { uID = id });
+
+            return pedidos.FirstOrDefault();
+        }
+
+        public IEnumerable<ItemPedido> ObterItemPedido(int idpedido)
+        {
+            // return Db.ItensPedidos.Where(i => i.IdPedido == idpedido).OrderBy(i => i.Produto.Apelido);
+            StringBuilder query = new StringBuilder();
+            query.AppendLine(@"SELECT * FROM pedido P
+                               INNER JOIN cliente C ON p.ClienteId = C.Id 
+                               INNER JOIN itempedido IT ON P.ID = IT.PedidoId
+                               INNER JOIN produto PD ON IT.ProdutoId = PD.ID
+                               INNER JOIN fornecedor F ON PD.FornecedorId = F.ID
+                               WHERE IT.PEDIDOID=@uIDPEDIDO");
+            var itenspedidos = Db.Database.GetDbConnection().Query<Pedido, Cliente, ItemPedido, Produto, Fornecedor, ItemPedido>(query.ToString(),
+                (p, c, it, pd, f) =>
+                {
+                    p.Cliente = c;
+                    it.Pedido = p;
+                    pd.Fornecedor = f;
+                    it.Produto = pd;
+                    return it;
+                }, new { @uPEDIDOID = idpedido });
+            return itenspedidos;
+        }
+
+        public ItemPedido ObterItemPedidoPorId(int id)
+        {
+            // return Db.ItensPedidos.AsNoTracking().FirstOrDefault(i => i.Id == id);
+            StringBuilder query = new StringBuilder();
+            query.AppendLine(@"SELECT * FROM pedido P
+                               INNER JOIN cliente C ON p.ClienteId = C.Id 
+                               INNER JOIN itempedido IT ON P.ID = IT.PedidoID
+                               INNER JOIN produto PD ON IT.ProdutoId = PD.ID
+                               INNER JOIN fornecedor F ON PD.FornecedorId = F.ID
+                               WHERE IT.ID=@uID");
+            var itenspedidos = Db.Database.GetDbConnection().Query<Pedido, Cliente, ItemPedido, Produto, Fornecedor, ItemPedido>(query.ToString(),
+                (p, c, it, pd, f) =>
+                {
+                    p.Cliente = c;
+                    it.Pedido = p;
+                    pd.Fornecedor = f;
+                    it.Produto = pd;
+                    return it;
+                }, new { uID = id });
+
+            return itenspedidos.FirstOrDefault();
+
         }
 
     }

@@ -11,6 +11,7 @@ namespace DrVendas.dddcore.Domain.Entidades.AgregacaoPedido
         public DateTime? DataEntrega { get; set; }
         public int ClienteId { get; set; }
         public string Observacao { get; set; }
+        public int QtdProdutos { get; set; }
         public decimal ValorTotalPedido { get; set; }
         public virtual Cliente Cliente { get; set; }
         public virtual ICollection<ItemPedido> ItensPedidos { get; set; }
