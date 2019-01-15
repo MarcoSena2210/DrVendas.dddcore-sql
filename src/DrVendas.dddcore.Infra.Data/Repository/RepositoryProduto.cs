@@ -18,8 +18,8 @@ namespace DrVendas.dddcore.Infra.Data.Repository
         public override IEnumerable<Produto> ObterTodos()
         {
             StringBuilder query = new StringBuilder();
-            query.Append(@" SELECT * FROM produtos P
-                            INNER JOIN fornecedores F ON p.IdFornecedor = F.Id
+            query.Append(@" SELECT * FROM produto P
+                            INNER JOIN fornecedor F ON p.IdFornecedor = F.Id
                             ORDER BY P.ID DESC
                           ");
             var produtos = Db.Database.GetDbConnection().Query<Produto, Fornecedor, Produto>(query.ToString(),
@@ -34,8 +34,8 @@ namespace DrVendas.dddcore.Infra.Data.Repository
         public override Produto ObterPorId(int id)
         {
             StringBuilder query = new StringBuilder();
-            query.Append(@" SELECT * FROM produtos P
-                            INNER JOIN fornecedores F ON p.IdFornecedor = F.Id
+            query.Append(@" SELECT * FROM produto P
+                            INNER JOIN fornecedor F ON p.IdFornecedor = F.Id
                             WHERE P.id = @uID
                           ");
             var produtos = Db.Database.GetDbConnection().Query<Produto, Fornecedor, Produto>(query.ToString(),
@@ -54,8 +54,8 @@ namespace DrVendas.dddcore.Infra.Data.Repository
             // inner join com fornecedor
             // return Db.Produtos.Include(f => f.Fornecedor).FirstOrDefault(p => p.Apelido == apelido);
             StringBuilder query = new StringBuilder();
-            query.Append(@" SELECT * FROM produtos P
-                            INNER JOIN fornecedores F ON p.IdFornecedor = F.Id
+            query.Append(@" SELECT * FROM produto P
+                            INNER JOIN fornecedor F ON p.IdFornecedor = F.Id
                             WHERE P.apelido = @uAPELIDO
                           ");
             var produtos = Db.Database.GetDbConnection().Query<Produto, Fornecedor, Produto>(query.ToString(),
@@ -71,8 +71,8 @@ namespace DrVendas.dddcore.Infra.Data.Repository
         {
             // return Db.Produtos.AsNoTracking().FirstOrDefault(p => p.Nome == nome);
             StringBuilder query = new StringBuilder();
-            query.Append(@" SELECT * FROM produtos P
-                            INNER JOIN fornecedores F ON p.IdFornecedor = F.Id
+            query.Append(@" SELECT * FROM produto P
+                            INNER JOIN fornecedor F ON p.IdFornecedor = F.Id
                             WHERE P.nome = @uNOME
                           ");
             var produtos = Db.Database.GetDbConnection().Query<Produto, Fornecedor, Produto>(query.ToString(),

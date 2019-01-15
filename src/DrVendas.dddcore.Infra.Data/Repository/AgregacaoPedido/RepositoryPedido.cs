@@ -39,7 +39,7 @@ namespace DrVendas.dddcore.Infra.Data.Repository.AgregacaoPedido
         {
             StringBuilder query = new StringBuilder();
             query.AppendLine(@"SELECT * FROM pedido P
-                               INNER JOIN clientes C ON p.ClienteId = C.Id 
+                               INNER JOIN cliente C ON p.ClienteId = C.Id 
                                ORDER BY p.Id DESC");
             var pedidos = Db.Database.GetDbConnection().Query<Pedido, Cliente, Pedido>(query.ToString(),
                 (p, c) =>

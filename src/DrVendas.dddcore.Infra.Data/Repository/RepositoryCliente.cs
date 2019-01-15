@@ -21,14 +21,14 @@ namespace DrVendas.dddcore.Infra.Data.Repository
         public override IEnumerable<Cliente> ObterTodos()
         {
             StringBuilder query = new StringBuilder();
-            query.Append(@"SELECT * FROM clientes ORDER BY id DESC");
+            query.Append(@"SELECT * FROM cliente ORDER BY id DESC");
             return Db.Database.GetDbConnection().Query<Cliente>(query.ToString());
         }
 
         public override Cliente ObterPorId(int id)
         {
             StringBuilder query = new StringBuilder();
-            query.Append(@"SELECT * FROM clientes WHERE id=@uID");
+            query.Append(@"SELECT * FROM cliente WHERE id=@uID");
             var retorno = Db.Database.GetDbConnection().Query<Cliente>(query.ToString(), new { uID = id }).FirstOrDefault();
             return retorno;
         }
@@ -38,7 +38,7 @@ namespace DrVendas.dddcore.Infra.Data.Repository
             // return Db.Clientes.AsNoTracking().FirstOrDefault(c => c.Apelido == apelido);
             // FOI susbstuido as consultas pelo dapper pq a performace é melhor
             StringBuilder query = new StringBuilder();
-            query.Append(@"SELECT * FROM clientes WHERE apelido=@uAPELIDO");
+            query.Append(@"SELECT * FROM cliente WHERE apelido=@uAPELIDO");
             var retorno = Db.Database.GetDbConnection().Query<Cliente>(query.ToString(), new { uAPELIDO = apelido }).FirstOrDefault();
             return retorno;
         }
@@ -47,7 +47,7 @@ namespace DrVendas.dddcore.Infra.Data.Repository
         {
             // return Db.Clientes.AsNoTracking().FirstOrDefault(c => c.CPFCNPJ.Numero == cpfcnpj);
             StringBuilder query = new StringBuilder();
-            query.Append(@"SELECT * FROM clientes WHERE CpfCnpj=@uCPFCNPJ");
+            query.Append(@"SELECT * FROM cliente WHERE CpfCnpj=@uCPFCNPJ");
             var retorno = Db.Database.GetDbConnection().Query<Cliente>(query.ToString(), new { uCPFCNPJ = cpfcnpj }).FirstOrDefault();
             return retorno;
         }
