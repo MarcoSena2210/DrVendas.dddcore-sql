@@ -22,9 +22,8 @@ namespace DrVendas.dddcore.Domain.Entidades.AgregacaoPedido
             DataPedidoDeveSerPreenchida();
             DataPedidoDeveSerSuperiorOuIgualADataDoDia();
             DataEntregaDeveSerSuperiorOuIgualDataPedido();
-            ObservacaoDeveTerUmTamanhoLimite();
-            ValorTotalPedidoDeverSerSuperiorAZero();
             ClienteDeveSerPreenchido();
+            ObservacaoDeveTerUmTamanhoLimite();
             return !ListaErros.Any();
         }
 
@@ -48,20 +47,21 @@ namespace DrVendas.dddcore.Domain.Entidades.AgregacaoPedido
             if (!string.IsNullOrEmpty(Observacao) && Observacao.Length > 4000) ListaErros.Add("Campo observação deverá ter no máximo 4000 caracteres!");
         }
 
-
-
         private void ValorTotalPedidoDeverSerSuperiorAZero()
         {
             if (ValorTotalPedido <= 0) ListaErros.Add("O campo valor  total do pedido deve ser maior que zero!");
         }
-
-
-
+               
         private void ClienteDeveSerPreenchido()
         {
             if (ClienteId == 0) ListaErros.Add("Cliente deve ser informado!");
         }
 
+        public Pedido VerificarSePedidoJaFoiEntregue(Pedido pedido)
+        {
+            if (pedido != null && pedido.DataEntrega != null) pedido.ListaErros.Add("O pedido já foi entregue, portanto não pode ser alterado ou excluído!");
+            return pedido;
+        }
 
 
     }

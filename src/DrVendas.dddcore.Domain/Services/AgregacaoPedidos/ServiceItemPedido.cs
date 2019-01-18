@@ -19,13 +19,13 @@ namespace DrVendas.dddcore.Domain.Interfaces.Services.AgregacaoPedidos
         #region Adicionar itens
         public ItemPedido AdicionarItemPedido(ItemPedido item)
         {
-            item = AptoParaAdicionarItens(item);
+            item = AptoParaAdicionarItem(item);
             if (item.ListaErros.Any()) return item;
             repopedidos.AdicionarItemPedido(item);
             return item;
         }
 
-        private ItemPedido AptoParaAdicionarItens(ItemPedido item)
+        private ItemPedido AptoParaAdicionarItem(ItemPedido item)
         {
             if (!item.EstaConsistente()) return item;
             item = VerificarSeProdutoJaExisteNoPedidoInclusao(item);
@@ -61,7 +61,7 @@ namespace DrVendas.dddcore.Domain.Interfaces.Services.AgregacaoPedidos
 
         private ItemPedido VerificarSeProdutoJaExisteNoPedidoAlteracao(ItemPedido item)
         {
-            var itens = ObterItemPedidoProdutoEspecifico(item.ProdutoId).FirstOrDefault(x => x.PedidoId == item.PedidoId && x.Id != item.Id);
+            var itens = ObterItemPedidoProdutoEspecifico(item.PedidoId).FirstOrDefault(x => x.PedidoId == item.PedidoId && x.Id != item.Id);
             if (itens != null) item.ListaErros.Add("Este produto já existe neste pedido!");
             return item;
         }
@@ -73,9 +73,7 @@ namespace DrVendas.dddcore.Domain.Interfaces.Services.AgregacaoPedidos
         public ItemPedido RemoverItemPedido(ItemPedido item)
         {
             var pedido = new Pedido();
-            //  ??????????????????????   verificar onde esta essa implementação
-            ///////////pedido = pedido.VerificarSePedidoJaFoiEntregue(item.Pedido);
-
+            pedido = pedido.VerificarSePedidoJaFoiEntregue(item.Pedido);
             if (!pedido.ListaErros.Any())
             {
                 var itens = ObterItemPedido(item.PedidoId).ToList();
@@ -125,5 +123,3 @@ namespace DrVendas.dddcore.Domain.Interfaces.Services.AgregacaoPedidos
 
     }
 }
-
-   

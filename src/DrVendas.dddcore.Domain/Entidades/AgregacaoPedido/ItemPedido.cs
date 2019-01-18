@@ -14,14 +14,19 @@ namespace DrVendas.dddcore.Domain.Entidades.AgregacaoPedido
 
         public int ProdutoId { get; set; }
         public virtual Produto  Produto{ get; set; }
-        
+
         public override bool EstaConsistente()
         {
             QuantidadeDeveSerSuperiorAZero();
             ItemDePedidoDeveSerAssociadoAUmPedido();
             ProdudoDeveSerPreenchido();
-            ValorDoItemDeverSerSuperiorAZero();
-            ValorTotalDoItemDeverSerSuperiorAZero();
+            return !ListaErros.Any();
+        }
+
+        public bool EstaConsistente(bool pedido)
+        {
+            QuantidadeDeveSerSuperiorAZero();
+            ProdudoDeveSerPreenchido();
             return !ListaErros.Any();
         }
 
