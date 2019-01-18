@@ -2,8 +2,10 @@
 using DrVendas.dddcore.Domain.Shared.Entidades;
 using DrVendas.dddcore.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -17,6 +19,7 @@ namespace DrVendas.dddcore.Infra.Data.Repository
         public Repository(ContextEFSQLServer MeuContexto)
         {
                  Db = MeuContexto;
+            DbSet = Db.Set<TEntidade>();
         }
 
         public virtual  void Adicionar(TEntidade obj)
@@ -48,6 +51,16 @@ namespace DrVendas.dddcore.Infra.Data.Repository
         public  IEnumerable<TEntidade> Buscar(Expression<Func<TEntidade, bool>> predicate)
         {
             return DbSet.AsNoTracking().Where(predicate);
+        }
+
+        //Para trabalhar com ADO
+        protected string ObterStringConexao()
+        {
+            var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json").
+                Build();
+            return config.GetConnectionString("DefaultConnection");
         }
 
 

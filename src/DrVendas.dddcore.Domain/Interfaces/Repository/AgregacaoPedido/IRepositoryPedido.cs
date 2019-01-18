@@ -10,6 +10,6 @@ namespace DrVendas.dddcore.Domain.Interfaces.Repository.AgregacaoPedido
         void RemoverItemPedido(ItemPedido item);
         ItemPedido ObterItemPedidoPorId(int id);
         IEnumerable<ItemPedido> ObterItemPedido(int idpedido);
-
+        IEnumerable<ItemPedido> ObterItemPedidoProdutoEspecifico(int idproduto);
     }
 }

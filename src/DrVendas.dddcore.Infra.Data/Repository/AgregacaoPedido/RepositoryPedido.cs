@@ -1,7 +1,6 @@
 ﻿using Dapper;
 using DrVendas.dddcore.Domain.Entidades;
 using DrVendas.dddcore.Domain.Entidades.AgregacaoPedido;
-using DrVendas.dddcore.Domain.Interfaces.Repository;
 using DrVendas.dddcore.Domain.Interfaces.Repository.AgregacaoPedido;
 using DrVendas.dddcore.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
@@ -118,6 +117,14 @@ namespace DrVendas.dddcore.Infra.Data.Repository.AgregacaoPedido
 
             return itenspedidos.FirstOrDefault();
 
+        }
+
+        public IEnumerable<ItemPedido> ObterItemPedidoProdutoEspecifico(int idproduto)
+        {
+            StringBuilder query = new StringBuilder();
+            query.AppendLine(@"SELECT * FROM itempedido WHERE PRODUTO.ID=@uIDPRODUTO");
+            var itempedido = Db.Database.GetDbConnection().Query<ItemPedido>(query.ToString(), new { @uIDPRODUTO = idproduto });
+            return itempedido;
         }
 
     }

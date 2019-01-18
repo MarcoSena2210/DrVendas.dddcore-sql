@@ -12,5 +12,6 @@ namespace DrVendas.dddcore.Domain.Interfaces.Services.AgregacaoPedidos
         Pedido Remover(Pedido pedido);
         IEnumerable<Pedido> ObterTodos();
         Pedido ObterPorId(int id);
+
     }
 }
