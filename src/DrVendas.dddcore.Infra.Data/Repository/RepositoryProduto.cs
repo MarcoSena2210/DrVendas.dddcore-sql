@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+// Aqui estamos fazendos as consultas com DAPPER
+//
+
 namespace DrVendas.dddcore.Infra.Data.Repository
 {
     public class RepositoryProduto : Repository<Produto>, IRepositoryProduto
@@ -18,35 +21,18 @@ namespace DrVendas.dddcore.Infra.Data.Repository
         public override IEnumerable<Produto> ObterTodos()
         {
             StringBuilder query = new StringBuilder();
-            query.Append(@" SELECT * FROM produto P
-                            INNER JOIN fornecedor F ON p.IdFornecedor = F.Id
-                            ORDER BY P.ID DESC
-                          ");
-            var produtos = Db.Database.GetDbConnection().Query<Produto, Fornecedor, Produto>(query.ToString(),
-                (P, F) =>
-                {
-                    P.Fornecedor = F;
-                    return P;
-                });
+            query.Append(@" SELECT * FROM produto ORDER BY ID DESC");
+            var produtos = Db.Database.GetDbConnection().Query<Produto>(query.ToString());
             return produtos;
         }
 
         public override Produto ObterPorId(int id)
         {
             StringBuilder query = new StringBuilder();
-            query.Append(@" SELECT * FROM produto P
-                            INNER JOIN fornecedor F ON p.IdFornecedor = F.Id
-                            WHERE P.id = @uID
-                          ");
-            var produtos = Db.Database.GetDbConnection().Query<Produto, Fornecedor, Produto>(query.ToString(),
-                (P, F) =>
-                {
-                    P.Fornecedor = F;
-                    return P;
-                }, new { uID = id });
+            query.Append(@" SELECT * FROM produto  WHERE id = @uID  ");
+            var produtos = Db.Database.GetDbConnection().Query<Produto>(query.ToString(),new { uID = id });
             return produtos.FirstOrDefault();
         }
-
 
         public Produto ObterPorApelido(string apelido)
         {
@@ -54,16 +40,8 @@ namespace DrVendas.dddcore.Infra.Data.Repository
             // inner join com fornecedor
             // return Db.Produtos.Include(f => f.Fornecedor).FirstOrDefault(p => p.Apelido == apelido);
             StringBuilder query = new StringBuilder();
-            query.Append(@" SELECT * FROM produto P
-                            INNER JOIN fornecedor F ON p.IdFornecedor = F.Id
-                            WHERE P.apelido = @uAPELIDO
-                          ");
-            var produtos = Db.Database.GetDbConnection().Query<Produto, Fornecedor, Produto>(query.ToString(),
-                (P, F) =>
-                {
-                    P.Fornecedor = F;
-                    return P;
-                }, new { uAPELIDO = apelido });
+            query.Append(@" SELECT * FROM produto  WHERE apelido = @uAPELIDO");
+            var produtos = Db.Database.GetDbConnection().Query<Produto>(query.ToString(), new { uAPELIDO = apelido });
             return produtos.FirstOrDefault();
         }
 
@@ -71,16 +49,8 @@ namespace DrVendas.dddcore.Infra.Data.Repository
         {
             // return Db.Produtos.AsNoTracking().FirstOrDefault(p => p.Nome == nome);
             StringBuilder query = new StringBuilder();
-            query.Append(@" SELECT * FROM produto P
-                            INNER JOIN fornecedor F ON p.IdFornecedor = F.Id
-                            WHERE P.nome = @uNOME
-                          ");
-            var produtos = Db.Database.GetDbConnection().Query<Produto, Fornecedor, Produto>(query.ToString(),
-                (P, F) =>
-                {
-                    P.Fornecedor = F;
-                    return P;
-                }, new { uNOME = nome });
+            query.Append(@" SELECT * FROM produto WHERE nome = @uNOME  ");
+            var produtos = Db.Database.GetDbConnection().Query<Produto>(query.ToString(), new { uNOME = nome });
             return produtos.FirstOrDefault();
         }
     }

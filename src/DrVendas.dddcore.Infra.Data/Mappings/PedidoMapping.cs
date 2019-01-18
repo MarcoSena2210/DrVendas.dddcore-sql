@@ -21,7 +21,7 @@ namespace DrVendas.dddcore.Infra.Data.Mappings
             builder.Property(p => p.Observacao)
              .HasColumnType("varchar(4000)");
 
-            builder.Property(p => p.ValorTotalPedido)
+            builder.Property(p => p.ValorTotalPedido)  
              .HasColumnType("decimal(10,2)")
              .IsRequired();
 
