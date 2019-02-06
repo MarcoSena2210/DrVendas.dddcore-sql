@@ -22,7 +22,7 @@ namespace DrVendas.dddcore.Infra.Data.Repository
         {
             StringBuilder query = new StringBuilder();
             query.Append(@" SELECT * FROM produto ORDER BY ID DESC");
-            var produtos = Db.Database.GetDbConnection().Query<Produto>(query.ToString());
+            var produtos = Db.Database.GetDbConnection().Query<Produto>(query.ToString());  
             return produtos;
         }
 
@@ -39,7 +39,7 @@ namespace DrVendas.dddcore.Infra.Data.Repository
             // return Db.Produtos.AsNoTracking().FirstOrDefault(p => p.Apelido == apelido);
             // inner join com fornecedor
             // return Db.Produtos.Include(f => f.Fornecedor).FirstOrDefault(p => p.Apelido == apelido);
-            StringBuilder query = new StringBuilder();
+            StringBuilder query = new StringBuilder();   //vamos usar o dapper
             query.Append(@" SELECT * FROM produto  WHERE apelido = @uAPELIDO");
             var produtos = Db.Database.GetDbConnection().Query<Produto>(query.ToString(), new { uAPELIDO = apelido });
             return produtos.FirstOrDefault();

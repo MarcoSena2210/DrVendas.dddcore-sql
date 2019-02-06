@@ -19,7 +19,7 @@ namespace DrVendas.dddcore.Infra.Data.Repository
         public Repository(ContextEFSQLServer MeuContexto)
         {
                  Db = MeuContexto;
-            DbSet = Db.Set<TEntidade>();
+                 DbSet = Db.Set<TEntidade>(); //inicia o dbset
         }
 
         public virtual  void Adicionar(TEntidade obj)
@@ -53,7 +53,7 @@ namespace DrVendas.dddcore.Infra.Data.Repository
             return DbSet.AsNoTracking().Where(predicate);
         }
 
-        //Para trabalhar com ADO
+        //Para trabalhar com ADO, faz a conexao
         protected string ObterStringConexao()
         {
             var config = new ConfigurationBuilder()

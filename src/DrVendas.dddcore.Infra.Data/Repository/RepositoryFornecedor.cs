@@ -10,7 +10,7 @@ namespace DrVendas.dddcore.Infra.Data.Repository
 {
     public class RepositoryFornecedor : Repository<Fornecedor>, IRepositoryFornecedor
     {
-        //Usando o ADO
+        //Usando o ADO  nso metodos de leitura
         public RepositoryFornecedor(ContextEFSQLServer MeuContexto)
             : base(MeuContexto)
         {
@@ -20,7 +20,7 @@ namespace DrVendas.dddcore.Infra.Data.Repository
         {
             StringBuilder query = new StringBuilder();
             query.Append(@"SELECT * FROM fornecedor ORDER BY id DESC");
-            return ExecutarDataReader(null, query.ToString());
+            return ExecutarDataReader(null, query.ToString());  //nao estou passando parametro
         }
 
         public override Fornecedor ObterPorId(int id)
@@ -96,6 +96,6 @@ namespace DrVendas.dddcore.Infra.Data.Repository
                 return fornecedores;
             }
         }
-    }
+     }
 
 }

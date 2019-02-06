@@ -23,13 +23,32 @@ namespace DrVendas.dddcore.Domain.Interfaces.Services.AgregacaoPedidos
             repopedidos.Adicionar(pedido);
             return pedido;
         }
+
         private Pedido AptoParaAdicionarPedidos(Pedido pedido)
         {
-            if (!pedido.EstaConsistente()) return pedido;
+            if (!pedido.EstaConsistente()) return pedido; //nao passou na 1 regra
             pedido = VerificarSeExistePedidoAbertoDoClienteNaDataInclusao(pedido);
             pedido = VerificarSeExisteItemDePedidoNaInclusao(pedido);
             pedido = VerificarSeItemPedidoDaInclusaoEhConsistente(pedido);
             return pedido;
+        }
+
+      
+
+        
+       
+
+        #endregion Adicionar Pedidos
+
+        #region Atualizar Pedidos
+        public Pedido Atualizar(Pedido pedido)
+        {
+            pedido = AptoParaAtualizarPedido(pedido);
+            if (pedido.ListaErros.Any()) return pedido;
+
+            repopedidos.Atualizar(pedido);
+            return pedido;
+
         }
 
         private Pedido VerificarSeExistePedidoAbertoDoClienteNaDataInclusao(Pedido pedido)
@@ -61,21 +80,28 @@ namespace DrVendas.dddcore.Domain.Interfaces.Services.AgregacaoPedidos
             return pedido;
         }
 
-        #endregion Adicionar Pedidos
-
-        public Pedido Atualizar(Pedido pedido)
-        {
-            repopedidos.Atualizar(pedido);
+        private Pedido AptoParaAtualizarPedido(Pedido pedido) {
+            if (!pedido.EstaConsistente()) return pedido;
+            pedido = VerificarSeExisteItemDePedidoNaInclusao(pedido);
+            pedido = pedido.VerificarSePedidoJaFoiEntregue(pedido);
             return pedido;
-
+            
         }
 
+        #endregion Atualizar Pedidos
+
+        #region Remover Pedidos
         public Pedido Remover(Pedido pedido)
         {
+            pedido = pedido.VerificarSePedidoJaFoiEntregue(pedido);
+            if (pedido.ListaErros.Any()) return pedido;
+
             repopedidos.Remover(pedido);
             return pedido;
         }
+        #endregion Remover Pedidos
 
+        #region Consultar Pedidos
         public IEnumerable<Pedido> ObterTodos()
         {
             return repopedidos.ObterTodos();
@@ -86,6 +112,8 @@ namespace DrVendas.dddcore.Domain.Interfaces.Services.AgregacaoPedidos
         {
             return repopedidos.ObterPorId(id);
         }
+        #endregion Consultar Pedidos 
+
         public void Dispose()
         {
             repopedidos.Dispose();

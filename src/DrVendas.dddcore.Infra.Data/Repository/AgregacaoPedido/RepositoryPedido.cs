@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+//vamos usar o Dapper
 namespace DrVendas.dddcore.Infra.Data.Repository.AgregacaoPedido
 {
     public class RepositoryPedido : Repository<Pedido>, IRepositoryPedido

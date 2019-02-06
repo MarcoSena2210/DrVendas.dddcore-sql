@@ -2,7 +2,7 @@
 using DrVendas.dddcore.Domain.Entidades;
 using DrVendas.dddcore.Domain.Interfaces.Repository;
 using DrVendas.dddcore.Infra.Data.Context;
-using Microsoft.EntityFrameworkCore;
+//using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -94,10 +94,11 @@ namespace DrVendas.dddcore.Infra.Data.Repository
             return cliente;
         }
 
+        //retorna uma lista de clientes
         private IEnumerable<Cliente> ExecutarDataReader(SqlParameter[] param, string sql)
         {
             string cn = ObterStringConexao();
-            List<Cliente> clientes = new List<Cliente>();
+            List<Cliente> clientes = new List<Cliente>();  //inicializa cliente
             using (SqlConnection con = new SqlConnection(cn))
             {
                 con.Open();
