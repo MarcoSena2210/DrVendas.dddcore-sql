@@ -20,7 +20,8 @@ namespace DrVendas.dddcore.Domain.Interfaces.Services.AgregacaoPedidos
         public ItemPedido AdicionarItemPedido(ItemPedido item)
         {
             item = AptoParaAdicionarItem(item);
-            if (item.ListaErros.Any()) return item;
+            if (item.ListaErros.Any()) return item; //Se ja tiver algun erro, ja retorno
+
             repopedidos.AdicionarItemPedido(item);
             return item;
         }
@@ -46,8 +47,11 @@ namespace DrVendas.dddcore.Domain.Interfaces.Services.AgregacaoPedidos
         #region Atualizar itens
         public ItemPedido AtualizarItemPedido(ItemPedido item)
         {
+
+
             item = AptoParaAtualizarItem(item);
             if (item.ListaErros.Any()) return item;
+
             repopedidos.AtulizarItemPedido(item);
             return item;
         }

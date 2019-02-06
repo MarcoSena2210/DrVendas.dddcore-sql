@@ -55,7 +55,9 @@ namespace DrVendas.dddcore.Domain.Entidades.AgregacaoPedido
             if (ValorTotalItem <= 0) ListaErros.Add("O campo valor total do item dever ser maior que zero!");
         }
 
-
+        private void VerificarSePedidoEstaEntregue() {
+            if (Pedido !=null && Pedido.DataEntrega != null) ListaErros.Add("Não é possível alterar lista");
+        }
 
     }
 }
