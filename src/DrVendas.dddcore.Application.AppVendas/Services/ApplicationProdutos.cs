@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace Projeto.Curso.Core.Application.Pedido.Services
 {
     public class ApplicationProdutos : IApplicationProduto
-    {
+    {   /*  injeção de dependências */
         private readonly IServiceProduto serviceProdutos;
         private readonly IMapper mapper;
 

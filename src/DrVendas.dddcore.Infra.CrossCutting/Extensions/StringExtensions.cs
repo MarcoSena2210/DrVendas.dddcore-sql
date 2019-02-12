@@ -27,9 +27,9 @@ namespace DrVendas.dddcore.Infra.CrossCutting.Extensions
             return "";
         }
 
-        public static decimal ConvertDecimal(this string strIn, string masc)
+        public static decimal ConvertDecimal(this string strIn, string mascara)
         {
-            var retorno = decimal.Parse(string.Format(CultureInfo.GetCultureInfo("pt-BR"), masc, strIn));
+            var retorno = decimal.Parse(string.Format(CultureInfo.GetCultureInfo("pt-BR"), mascara, strIn));
             return retorno;
         }
 

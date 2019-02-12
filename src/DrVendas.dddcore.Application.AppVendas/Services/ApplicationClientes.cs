@@ -35,6 +35,8 @@ namespace DrVendas.dddcore.Application.AppVendas.Services.AgregacaoPedidos
         {
             return mapper.Map<ClienteViewModel>(serviceclientes.Remover(mapper.Map<Cliente>(cliente)));
         }
+
+
         public IEnumerable<ClienteViewModel> ObterTodos()
         {
             return mapper.Map<IEnumerable<ClienteViewModel>>(serviceclientes.ObterTodos());
