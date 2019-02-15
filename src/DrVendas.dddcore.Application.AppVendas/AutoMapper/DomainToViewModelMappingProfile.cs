@@ -12,6 +12,9 @@ namespace DrVendas.dddcore.Application.AppVendas.AutoMapper
     {
         public DomainToViewModelMappingProfile()
         {
+            /* Fazendo a passagem de um objeto Domain para ViewModel, como existem objetos complexos(ValueObject) o 
+             * ForMember  não   funciona.
+             Só funciona com  ConvertUsing*/
             CreateMap<Cliente, ClienteViewModel>()
                  .ConvertUsing((src, dst) =>
                  {

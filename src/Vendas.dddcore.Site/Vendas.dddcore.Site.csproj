@@ -13,7 +13,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DrVendas.dddcore.Application.AppVendas\DrVendas.dddcore.Application.AppVendas.csproj" />
     <ProjectReference Include="..\DrVendas.dddcore.Infra.Data\DrVendas.dddcore.Infra.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Pedidos\Controllers\" />
+    <Folder Include="Areas\Pedidos\Views\" />
   </ItemGroup>
 
 </Project>

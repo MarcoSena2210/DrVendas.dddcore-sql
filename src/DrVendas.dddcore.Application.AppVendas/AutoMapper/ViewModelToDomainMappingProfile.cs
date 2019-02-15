@@ -13,6 +13,7 @@ namespace DrVendas.dddcore.Application.AppVendas.AutoMapper
     {
         public ViewModelToDomainMappingProfile()
         {
+            /* passando minha viewModel para domain */
             CreateMap<ClienteViewModel, Cliente>()
                  .ConvertUsing((src, dst) =>
                  {
