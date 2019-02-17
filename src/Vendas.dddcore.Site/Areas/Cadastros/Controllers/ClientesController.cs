@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
 {
+    [Area("Cadastros")]
     public class ClientesController : Controller
     {
         /*Para usar o obter todos da camada de aplicação precisamos fazer a injeção de dependências

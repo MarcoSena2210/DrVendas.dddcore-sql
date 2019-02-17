@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using DrVendas.dddcore.Infra.CrossCuting.IoC;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Vendas.dddcore.Site.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Vendas.dddcore.Site.Data;
 
 namespace Vendas.dddcore.Site
 {
@@ -37,12 +34,28 @@ namespace Vendas.dddcore.Site
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            //    .AddDefaultTokenProviders();
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-        }
 
+            // Add application services.
+//Sena            services.AddTransient<IEmailSender, EmailSender>();
+            services.AddMvc();
+            services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
+            services.AddAutoMapper();
+            RegistersServices(services);
+         }
+
+        //Incluimos o metodo  RegisterServices que registra o  auto mapper criado recentemente, e claro foi adcionado as referencias do projeto
+        // e precisamos chamalo no metodo configure
+        private static void RegistersServices(IServiceCollection service)
+        {
+            NativeInjectorMapping.RegistersServices(service);
+        }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {

@@ -1,10 +1,11 @@
 ﻿using DrVendas.dddcore.Domain.Entidades.AgregacaoPedido;
 using DrVendas.dddcore.Domain.Interfaces.Repository.AgregacaoPedido;
+using DrVendas.dddcore.Domain.Interfaces.Services.AgregacaoPedidos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DrVendas.dddcore.Domain.Interfaces.Services.AgregacaoPedidos
+namespace DrVendas.dddcore.Domain.Services.AgregacaoPedidos
 {
     public class ServicePedido : IServicePedido
     {

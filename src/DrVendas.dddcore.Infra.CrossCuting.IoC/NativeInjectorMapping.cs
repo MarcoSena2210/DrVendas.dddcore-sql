@@ -2,24 +2,24 @@
 using Microsoft.Extensions.DependencyInjection;
 using DrVendas.dddcore.Application.AppVendas.Interfaces;
 using DrVendas.dddcore.Application.AppVendas.Interfaces.AgregracaoPedidos;
-using Projeto.Curso.Core.Application.Pedido.Services;
-using Projeto.Curso.Core.Application.Pedido.Services.AgregacaoPedidos;
-using Projeto.Curso.Core.Domain.Pedido.Interfaces.Repository;
-using Projeto.Curso.Core.Domain.Pedido.Interfaces.Repository.AgregacaoPedidos;
-using Projeto.Curso.Core.Domain.Pedido.Interfaces.Services;
-using Projeto.Curso.Core.Domain.Pedido.Interfaces.Services.AgregacaoPedidos;
-using Projeto.Curso.Core.Domain.Pedido.Services;
-using Projeto.Curso.Core.Domain.Pedido.Services.AgregacaoPedidos;
-using Projeto.Curso.Core.Infra.Data.Context;
-using Projeto.Curso.Core.Infra.Data.Repository;
-using Projeto.Curso.Core.Infra.Data.Repository.AgregacaoPedidos;
+using DrVendas.dddcore.Application.AppVendas.Services;
+using DrVendas.dddcore.Application.AppVendas.Services.AgregacaoPedidos;
+using DrVendas.dddcore.Domain.Interfaces.Repository;
+using DrVendas.dddcore.Domain.Interfaces.Repository.AgregacaoPedido;
+using DrVendas.dddcore.Domain.Interfaces.Services;
+using DrVendas.dddcore.Domain.Interfaces.Services.AgregacaoPedidos;
+using DrVendas.dddcore.Domain.Services;
+using DrVendas.dddcore.Domain.Services.AgregacaoPedidos ;
+using DrVendas.dddcore.Infra.Data.Context;
+using DrVendas.dddcore.Infra.Data.Repository;
+using DrVendas.dddcore.Infra.Data.Repository.AgregacaoPedido;
 
 namespace DrVendas.dddcore.Infra.CrossCuting.IoC
 {
     public class NativeInjectorMapping
     {
 
-        public static void RegisterServices(IServiceCollection service)
+        public static void RegistersServices(IServiceCollection service)
         {
             service.AddSingleton(Mapper.Configuration);
             service.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
@@ -27,22 +27,22 @@ namespace DrVendas.dddcore.Infra.CrossCuting.IoC
             service.AddScoped<IApplicationCliente, ApplicationClientes>();
             service.AddScoped<IApplicationFornecedor, ApplicationFornecedores>();
             service.AddScoped<IApplicationProduto, ApplicationProdutos>();
-            service.AddScoped<IApplicationItensPedido, ApplicationItensPedidos>();
+            service.AddScoped<IApplicationItemPedido, ApplicationItensPedidos>();
             service.AddScoped<IApplicationPedido, ApplicationPedidos>();
 
-            service.AddScoped<IServiceClientes, ServiceClientes>();
-            service.AddScoped<IServiceFornecedores, ServiceFornecedores>();
-            service.AddScoped<IServiceProdutos, ServiceProdutos>();
-            service.AddScoped<IServiceItensPedidos, ServiceItensPedidos>();
-            service.AddScoped<IServicePedidos, ServicePedidos>();
+            service.AddScoped<IServiceCliente, ServiceClientes>();
+            service.AddScoped<IServiceFornecedor, ServiceFornecedor>();
+            service.AddScoped<IServiceProduto, ServiceProduto>();
+            service.AddScoped<IServiceItemPedido, ServiceItemPedido>();
+            service.AddScoped<IServicePedido, ServicePedido>();
 
-            service.AddScoped<IRepositoryClientes, RepositoryClientes>();
-            service.AddScoped<IRepositoryFornecedores, RepositoryFornecedores>();
-            service.AddScoped<IRepositoryProdutos, RepositoryProdutos>();
-            service.AddScoped<IRepositoryPedidos, RepositoryPedidos>();
-            service.AddScoped<IServicePedidos, ServicePedidos>();
+            service.AddScoped<IRepositoryCliente, RepositoryCliente>();
+            service.AddScoped<IRepositoryFornecedor, RepositoryFornecedor>();
+            service.AddScoped<IRepositoryProduto, RepositoryProduto>();
+            service.AddScoped<IRepositoryPedido, RepositoryPedido>();
+            service.AddScoped<IServicePedido, ServicePedido>();
 
-            service.AddScoped<ContextEFPedidos>();
+            service.AddScoped<ContextEFSQLServer>();
 
 
         }

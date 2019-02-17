@@ -7,8 +7,8 @@ using DrVendas.dddcore.Infra.CrossCutting.Extensions;
 using System;
 using System.Collections.Generic;
 
-namespace Projeto.Curso.Core.Application.Pedido.Services
-{
+namespace DrVendas.dddcore.Application.AppVendas.Services
+{ 
     public class ApplicationFornecedores : IApplicationFornecedor
     {
 

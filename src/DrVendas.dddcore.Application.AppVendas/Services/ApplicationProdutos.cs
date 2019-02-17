@@ -6,7 +6,7 @@ using DrVendas.dddcore.Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 
-namespace Projeto.Curso.Core.Application.Pedido.Services
+namespace DrVendas.dddcore.Application.AppVendas.Services
 {
     public class ApplicationProdutos : IApplicationProduto
     {   /*  injeção de dependências */

@@ -7,8 +7,8 @@ using DrVendas.dddcore.Infra.CrossCutting.Extensions;
 using System;
 using System.Collections.Generic;
 
-namespace DrVendas.dddcore.Application.AppVendas.Services.AgregacaoPedidos
-{
+namespace DrVendas.dddcore.Application.AppVendas.Services
+{ 
     public class ApplicationClientes : IApplicationCliente
     {
         private readonly IServiceCliente serviceclientes;

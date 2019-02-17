@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace DrVendas.dddcore.Application.AppVendas.ViewModels
 {
@@ -13,13 +14,13 @@ namespace DrVendas.dddcore.Application.AppVendas.ViewModels
         public string Apelido { get; set; }
         public string Nome { get; set; }
 
-       // [Display(Name = "CPF ou CNPJ")]
+        [Display(Name = "CPF ou CNPJ")]
         public string CpfCnpj { get; set; }
 
-     //   [Display(Name = "E-Mail")]
+        [Display(Name = "E-Mail")]
         public string Email { get; set; }
 
-     //   [Display(Name = "Endereço")]
+        [Display(Name = "Endereço")]
         public string Endereco { get; set; }
         public string Bairro { get; set; }
         public string Cidade { get; set; }
