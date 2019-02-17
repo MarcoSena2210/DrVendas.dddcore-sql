@@ -1,5 +1,6 @@
 ﻿using DrVendas.dddcore.Application.AppVendas.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
 {
@@ -17,8 +18,15 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
         }
         public IActionResult Index()
         {
-            var model = appClientes.ObterTodos();
-            return View(model);
+        
+            return View();
+        }
+
+        public JsonResult ListagemClientesJson()
+        {
+            var lista = appClientes.ObterTodos();
+            var settings = new JsonSerializerSettings();
+            return Json(lista, settings);
         }
     }
 }
