@@ -53,7 +53,20 @@ namespace DrVendas.dddcore.Application.AppVendas.AutoMapper
                  });
 
             CreateMap<Produto, ProdutoViewModel>()
-                    .ForMember(to => to.Valor, opt => opt.MapFrom(from => from.Valor.Formatado("{0:#,###,##0.00}")));
+                              .ConvertUsing((src, dst) =>
+                              {
+                                  return new ProdutoViewModel
+                                  {
+                                      Id = src.Id,
+                                      Apelido = src.Apelido,
+                                      Nome = src.Nome,
+                                      Valor = src.Valor.Formatado("{0:#,###,##0.00}"),
+                                      Unidade = src.Unidade,
+                                      IdFornecedor = src.FornecedorId,
+                                      NomeFornecedor = src.Fornecedor.Nome
+                                  };
+                              });
+
 
             CreateMap<Pedido, PedidoViewModel>()
                     .ForMember(to => to.DataPedido, opt => opt.MapFrom(from => from.DataPedido.Formatado("{0:dd/MM/yyyy}")))

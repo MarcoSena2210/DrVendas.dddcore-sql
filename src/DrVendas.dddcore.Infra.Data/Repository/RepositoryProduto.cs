@@ -20,10 +20,26 @@ namespace DrVendas.dddcore.Infra.Data.Repository
          }
         public override IEnumerable<Produto> ObterTodos()
         {
-            StringBuilder query = new StringBuilder();
-            query.Append(@" SELECT * FROM produto ORDER BY ID DESC");
-            var produtos = Db.Database.GetDbConnection().Query<Produto>(query.ToString());  
-            return produtos;
+            // vamos usar  o linq
+            var results = from p in Db.Produto
+                          join f in Db.Fornecedor on p.FornecedorId equals f.Id
+                          select new Produto
+                          {
+                              Id = p.Id,
+                              Apelido = p.Apelido,
+                              Nome = p.Nome,
+                              Valor = p.Valor,
+                              Unidade = p.Unidade,
+                              Fornecedor = new Fornecedor {
+                                  Nome = f.Nome
+                              }
+                          };
+            return results.ToList();
+            //   Nao vamos mais usar o dapper aqui e sim o linq
+            //StringBuilder query = new StringBuilder();
+            //query.Append(@" SELECT * FROM produto ORDER BY ID DESC");
+            //var produtos = Db.Database.GetDbConnection().Query<Produto>(query.ToString());  
+            //return produtos;
         }
 
         public override Produto ObterPorId(int id)
