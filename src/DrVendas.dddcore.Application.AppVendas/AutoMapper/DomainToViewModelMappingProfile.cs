@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DrVendas.dddcore.Application.AppVendas.ViewModels;
 using DrVendas.dddcore.Application.AppVendas.ViewModels.AgregracaoPedidos;
+using DrVendas.dddcore.Domain.DTO;
 using DrVendas.dddcore.Domain.Entidades;
 using DrVendas.dddcore.Domain.Entidades.AgregacaoPedido;
 using DrVendas.dddcore.Infra.CrossCutting.Extensions;
@@ -68,9 +69,14 @@ namespace DrVendas.dddcore.Application.AppVendas.AutoMapper
                               });
 
 
-            CreateMap<Pedido, PedidoViewModel>()
+            CreateMap<Pedido, PedidoViewModel>() //esse será usad para incluir 
                     .ForMember(to => to.DataPedido, opt => opt.MapFrom(from => from.DataPedido.Formatado("{0:dd/MM/yyyy}")))
                     .ForMember(to => to.DataEntrega, opt => opt.MapFrom(from => from.DataEntrega.Formatado("{0:dd/MM/yyyy}")));
+
+            CreateMap<PedidoDTO, PedidoViewModel>() //será usado para algumas consultas
+                   .ForMember(to => to.DataPedido, opt => opt.MapFrom(from => from.DataPedido.Formatado("{0:dd/MM/yyyy}")))
+                   .ForMember(to => to.DataEntrega, opt => opt.MapFrom(from => from.DataEntrega.Formatado("{0:dd/MM/yyyy}")))
+                   .ForMember(to => to.ValorTotalProdutos, opt => opt.MapFrom(from => from.ValorTotalProdutos.Formatado("{0:#,###,##0.00}")));
 
             CreateMap<ItemPedido, ItemPedidoViewModel>();
 

@@ -47,6 +47,17 @@ namespace DrVendas.dddcore.Application.AppVendas.Services.AgregacaoPedidos
             return mapper.Map<PedidoViewModel>(servicepedidos.ObterPorId(id));
         }
 
+        //Precisamos configurar o auto mapper, só vai ter de dominio para viewmodel
+        public PedidoViewModel ObterPorIdCompleto(int id)
+        {
+            return mapper.Map<PedidoViewModel>(servicepedidos.ObterPorIdCompleto(id));
+         }
+
+        public IEnumerable<PedidoViewModel> ObterListagemPedidos()
+        {
+            return mapper.Map<IEnumerable<PedidoViewModel>>(servicepedidos.ObterListagemPedidos());
+        }
+
         public void Dispose()
         {
             servicepedidos.Dispose();

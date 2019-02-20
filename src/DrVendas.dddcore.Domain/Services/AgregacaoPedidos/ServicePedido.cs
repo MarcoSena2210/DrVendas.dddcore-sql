@@ -1,4 +1,5 @@
-﻿using DrVendas.dddcore.Domain.Entidades.AgregacaoPedido;
+﻿using DrVendas.dddcore.Domain.DTO;
+using DrVendas.dddcore.Domain.Entidades.AgregacaoPedido;
 using DrVendas.dddcore.Domain.Interfaces.Repository.AgregacaoPedido;
 using DrVendas.dddcore.Domain.Interfaces.Services.AgregacaoPedidos;
 using System;
@@ -114,6 +115,16 @@ namespace DrVendas.dddcore.Domain.Services.AgregacaoPedidos
             return repopedidos.ObterPorId(id);
         }
         #endregion Consultar Pedidos 
+
+        public PedidoDTO ObterPorIdCompleto(int id)
+        {
+            return repopedidos.ObterPorIdCompleto(id);
+        }
+
+        public IEnumerable<PedidoDTO> ObterListagemPedidos()
+        {
+            return repopedidos.ObterListagemPedidos();
+        }
 
         public void Dispose()
         {

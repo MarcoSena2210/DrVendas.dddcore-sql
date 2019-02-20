@@ -34,3 +34,56 @@ INSERT INTO [dbo].[Produto]  ([Apelido] ,[Nome],[Descricao],[Valor],[Unidade],[F
      VALUES  ('CELJ4','Celular Sunsung J4','Smartphone Samsung Galaxy J4 16GB, Tela 5.5", Dual chip, 4G, Câmera 13MP, Android 8.0, Processador Quad Core e RAM de 2GB - Dourado'
 ,698.00,'UN',1)
 GO
+
+INSERT INTO [dbo].[Produto]  ([Apelido] ,[Nome],[Descricao],[Valor],[Unidade],[FornecedorId])
+     VALUES  ('CELJ9','Celular Sunsung J9','Smartphone Samsung Galaxy J4 16GB, Tela 5.5", Dual chip, 4G, Câmera 13MP, Android 8.0, Processador Quad Core e RAM de 2GB - Dourado'
+,698.00,'UN',1)
+GO
+
+INSERT INTO [dbo].[Produto]  ([Apelido] ,[Nome],[Descricao],[Valor],[Unidade],[FornecedorId])
+     VALUES  ('CELMOTO10','Celular MOTOROLA 10','Smartphone SMotorola M10 16GB, Tela 5.5", Dual chip, 4G, Câmera 13MP, Android 8.0, Processador Quad Core e RAM de 2GB - Dourado'
+,698.00,'UN',1)
+GO
+
+GO
+SELECT * FROM CLIENTE 
+
+SELECT * FROM PRODUTO
+
+SELECT * FROM FORNECEDOR
+
+SELECT * FROM ItemPedido
+
+SELECT *  FROM [dbo].[Pedido]
+
+INSERT INTO Pedido VALUES('20190210',NULL,1,'Entrega apenas nas segunda-feira',4000.40)
+INSERT INTO Pedido VALUES('20190210',NULL,2,'Entrega apenas nas segunda-feira',4000.40)
+INSERT INTO Pedido VALUES('20190215',NULL,3,'Entrega apenas nas segunda-feira',4000.40)
+INSERT INTO Pedido VALUES('20190215',NULL,4,'Entrega apenas nas segunda-feira',4000.40)
+INSERT INTO Pedido VALUES('20190215',NULL,4,'Entrega apenas nas segunda-feira',4000.40)
+INSERT INTO Pedido VALUES('20190215',NULL,3,'Entrega apenas nas segunda-feira',4000.40)
+
+
+INSERT INTO ItemPedido VALUES (2, 1000,00,1,1)
+INSERT INTO ItemPedido VALUES (1, 2000,00,1,2)
+INSERT INTO ItemPedido VALUES (1, 2030,00,1,3)
+
+INSERT INTO ItemPedido VALUES (2, 1000,00,2,1)
+INSERT INTO ItemPedido VALUES (1, 2000,00,2,2)
+INSERT INTO ItemPedido VALUES (1, 2030,00,2,3)
+
+INSERT INTO ItemPedido VALUES (2, 1000,00,3,1)
+INSERT INTO ItemPedido VALUES (1, 2000,00,3,2)
+INSERT INTO ItemPedido VALUES (1, 2030,00,3,3)
+
+INSERT INTO ItemPedido VALUES (2, 1000,00,4,1)
+INSERT INTO ItemPedido VALUES (1, 2000,00,4,2)
+INSERT INTO ItemPedido VALUES (1, 2030,00,4,3)
+
+INSERT INTO ItemPedido VALUES (2, 1000,00,5,1)
+INSERT INTO ItemPedido VALUES (1, 2000,00,5,2)
+INSERT INTO ItemPedido VALUES (1, 2030,00,5,3)
+
+INSERT INTO ItemPedido VALUES (2, 1000,00,6,1)
+INSERT INTO ItemPedido VALUES (1, 2000,00,6,2)
+INSERT INTO ItemPedido VALUES (1, 2030,00,6,3)

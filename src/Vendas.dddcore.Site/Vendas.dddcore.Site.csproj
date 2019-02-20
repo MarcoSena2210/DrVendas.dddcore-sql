@@ -19,11 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Pedidos\Controllers\" />
-    <Folder Include="Areas\Pedidos\Views\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Update="Areas\Cadastros\Views\Fornecedores\Incluir.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

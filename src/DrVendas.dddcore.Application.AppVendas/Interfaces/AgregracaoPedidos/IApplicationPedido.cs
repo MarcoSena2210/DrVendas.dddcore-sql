@@ -12,5 +12,9 @@ namespace DrVendas.dddcore.Application.AppVendas.Interfaces.AgregracaoPedidos
         IEnumerable<PedidoViewModel> ObterTodos();
         PedidoViewModel ObterPorId(int id);
 
+        PedidoViewModel ObterPorIdCompleto(int id);
+        IEnumerable<PedidoViewModel> ObterListagemPedidos();
+        
+
     }
 }

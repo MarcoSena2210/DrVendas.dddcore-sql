@@ -1,4 +1,5 @@
-﻿using DrVendas.dddcore.Domain.Entidades.AgregacaoPedido;
+﻿using DrVendas.dddcore.Domain.DTO;
+using DrVendas.dddcore.Domain.Entidades.AgregacaoPedido;
 using System;
 using System.Collections.Generic;
 
@@ -13,5 +14,7 @@ namespace DrVendas.dddcore.Domain.Interfaces.Services.AgregacaoPedidos
         IEnumerable<Pedido> ObterTodos();
         Pedido ObterPorId(int id);
 
+        PedidoDTO ObterPorIdCompleto(int id);
+        IEnumerable<PedidoDTO> ObterListagemPedidos();
     }
 }

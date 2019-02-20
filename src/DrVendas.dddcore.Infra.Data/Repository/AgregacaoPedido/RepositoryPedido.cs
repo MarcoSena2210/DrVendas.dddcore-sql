@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using DrVendas.dddcore.Domain.DTO;
 using DrVendas.dddcore.Domain.Entidades;
 using DrVendas.dddcore.Domain.Entidades.AgregacaoPedido;
 using DrVendas.dddcore.Domain.Interfaces.Repository.AgregacaoPedido;
@@ -32,6 +33,54 @@ namespace DrVendas.dddcore.Infra.Data.Repository.AgregacaoPedido
         public void RemoverItemPedido(ItemPedido item)
         {
             Db.ItemPedido.Remove(item);
+        }
+
+        public PedidoDTO ObterPorIdCompleto(int id)
+        {
+            StringBuilder query = new StringBuilder();
+            query.AppendLine(@"select p.Id, 
+                                      p.DataPedido, 
+                                      p.DataEntrega, 
+                                      p.Observacao,
+                                      (select count(*) from itempedido i where p.Id = i.PedidoId) QtdTotalProdutos,
+                                      (select sum(i.qtd * pd.valor)  from itempedido i, produto pd where p.Id = i.PedidoId  and i.ProdutoId = pd.Id) ValorTotalProdutos,
+                                       c.Nome NomeCliente, 
+                                       c.Endereco,
+                                       c.Bairro, 
+                                       c.Cidade, 
+                                       c.UF, 
+                                       c.CEP
+                                from pedido p
+                                Inner join cliente c on p.ClienteId = c.Id
+                                WHERE P.ID = @uID
+                              ");
+            var pedidos = Db.Database.GetDbConnection().Query<PedidoDTO>(query.ToString(), new { uID = id });
+            return pedidos.FirstOrDefault();
+
+        }
+
+        public IEnumerable<PedidoDTO> ObterListagemPedidos()
+        {
+            //Usando o dapper e passando um DTO
+            StringBuilder query = new StringBuilder();
+            query.AppendLine(@"select p.Id, 
+                                      p.DataPedido, 
+                                      p.DataEntrega, 
+                                      p.Observacao,
+                                      (select count(*) from itempedido i where p.Id = i.PedidoId) QtdTotalProdutos,
+                                      (select sum(i.qtd * pd.valor)  from itempedido i, produto pd where p.Id = i.PedidoId  and i.ProdutoId = pd.Id) ValorTotalProdutos,
+                                       c.Nome NomeCliente, 
+                                       c.Endereco,
+                                       c.Bairro, 
+                                       c.Cidade, 
+                                       c.UF, 
+                                       c.CEP
+                                from pedido p
+                                Inner join cliente c on p.ClienteId = c.Id
+                              ORDER BY p.DataPedido, Id DESC
+                              ");
+            var pedidos = Db.Database.GetDbConnection().Query<PedidoDTO>(query.ToString());
+            return pedidos;
         }
 
         public override IEnumerable<Pedido> ObterTodos()
