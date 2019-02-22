@@ -172,3 +172,27 @@ body {
 .gap-space {
     margin-top: 20px;
 }
+
+.margem-top-10 {
+    margin-top: 10px;
+}
+
+.no-sort {
+    pointer-events: none !important;
+    cursor: default !important;
+}
+
+    .no-sort::after {
+        display: none !important;
+    }
+
+.padding-25 {
+    padding: 25px;
+}
+
+.tabela-cor thead > tr > th,
+.header-cor {
+    width: 100%;
+    border-top: 3px solid #5872a3 !important;
+    border-bottom: 3px solid #5872a3 !important;
+}

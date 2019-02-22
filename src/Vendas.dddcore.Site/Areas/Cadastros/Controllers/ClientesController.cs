@@ -18,7 +18,11 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
         }
         public IActionResult Index()
         {
-        
+                    return View();
+        }
+
+        public IActionResult Incluir()
+        {
             return View();
         }
 

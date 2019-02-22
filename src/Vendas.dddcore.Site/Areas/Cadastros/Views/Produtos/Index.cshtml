@@ -6,7 +6,7 @@
 
 <br />
 
-<div class="row">
+<div class="row margem-top-10">
     <div class="col-md-12">
         <a asp-area="Cadastros" asp-controller="Produtos" asp-action="Incluir" class="btn btn-primary pull-left"><i class="glyphicon glyphicon-plus"></i> Novo Produto</a>
     </div>
@@ -16,12 +16,12 @@
 
 @Html.Partial("_Aguarde")
 
-<div class="row">
+<div class="row margem-top-10">
     <div class="col-md-12">
         <div class="panel panel-info">
             <div class="panel-heading">
                 <i class="glyphicon glyphicon-list-alt"></i>
-                CADASTRO - PRODUTOS
+                LISTAGEM - PRODUTOS
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -29,6 +29,7 @@
                         <table id="tbgrid" class="table table-hover" style="width:100%">
                             <thead>
                                 <tr>
+                                    <th class="no-sort"></th>
                                     <th class="no-sort"></th>
                                     <th class="no-sort"></th>
                                     <th class="text-center">Id</th>
@@ -51,6 +52,16 @@
 
     <script>
         colunas = [
+            {
+                "data": "Id",
+                "searchable": false,
+                "sortable": false,
+                "width": "2%",
+                "sClass": "text-center",
+                "render": function (id) {
+                    return "<a href='#' class='btn btn-info btn-sm showhint' title='Detalhar registro'><i class='glyphicon glyphicon-search'></i></a>"
+                }
+            },
             {
                 "data": "Id",
                 "searchable": false,
