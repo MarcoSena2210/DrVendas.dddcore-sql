@@ -71,8 +71,7 @@ namespace DrVendas.dddcore.Application.AppVendas.AutoMapper
                                       NomeFornecedor = src.Fornecedor.Nome
                                   };
                               });
-
-
+            
             CreateMap<Pedido, PedidoViewModel>() //esse será usad para incluir 
                     .ForMember(to => to.DataPedido, opt => opt.MapFrom(from => from.DataPedido.Formatado("{0:dd/MM/yyyy}")))
                     .ForMember(to => to.DataEntrega, opt => opt.MapFrom(from => from.DataEntrega.Formatado("{0:dd/MM/yyyy}")));

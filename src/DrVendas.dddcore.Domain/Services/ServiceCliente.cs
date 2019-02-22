@@ -37,6 +37,7 @@ namespace DrVendas.dddcore.Domain.Services
             return cliente;
         }
 
+
         private Cliente VerificarSeApelidoExisteEmInclusao(Cliente cliente)
         {
             if (ObterPorApelido(cliente.Apelido) != null) cliente.ListaErros.Add("O Apelido " + cliente.Apelido + " já existe em outro cliente!");
