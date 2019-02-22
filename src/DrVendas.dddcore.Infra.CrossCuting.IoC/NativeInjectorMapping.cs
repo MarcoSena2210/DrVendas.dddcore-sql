@@ -13,6 +13,8 @@ using DrVendas.dddcore.Domain.Services.AgregacaoPedidos ;
 using DrVendas.dddcore.Infra.Data.Context;
 using DrVendas.dddcore.Infra.Data.Repository;
 using DrVendas.dddcore.Infra.Data.Repository.AgregacaoPedido;
+using DrVendas.dddcore.Application.Shared.Interfaces;
+using DrVendas.dddcore.Application.Shared.Services;
 
 namespace DrVendas.dddcore.Infra.CrossCuting.IoC
 {
@@ -29,6 +31,8 @@ namespace DrVendas.dddcore.Infra.CrossCuting.IoC
             service.AddScoped<IApplicationProduto, ApplicationProdutos>();
             service.AddScoped<IApplicationItemPedido, ApplicationItensPedidos>();
             service.AddScoped<IApplicationPedido, ApplicationPedidos>();
+
+            service.AddScoped< IApplicationShared, ApplicationShared>();
 
             service.AddScoped<IServiceCliente, ServiceClientes>();
             service.AddScoped<IServiceFornecedor, ServiceFornecedor>();

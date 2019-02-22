@@ -1,4 +1,6 @@
 ﻿using DrVendas.dddcore.Application.AppVendas.Interfaces;
+using DrVendas.dddcore.Application.AppVendas.ViewModels;
+using DrVendas.dddcore.Application.Shared.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -12,10 +14,15 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
          * como inject, vamos usar o nativo do dotnet, na camada de cross cutting*/
 
         public readonly IApplicationCliente appClientes;
-        public ClientesController(IApplicationCliente _appClientes)
+
+        public readonly IApplicationShared appShared;
+
+        public ClientesController(IApplicationCliente _appClientes, IApplicationShared _appShared)
         {
             appClientes = _appClientes;
+            appShared = _appShared;
         }
+
         public IActionResult Index()
         {
                     return View();
@@ -23,8 +30,19 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
 
         public IActionResult Incluir()
         {
+            //ViewBag =forma de  passar dados para view
+            ViewBag.ListaEstados = appShared.ObterEstados();
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Incluir(ClienteViewModel model)
+        {
+            ViewBag.ListaEstados = appShared.ObterEstados();
+            if (!ModelState.IsValid) return View();  //verifica se ássou por todas validações  ou model
+            return View(model);
+        }
+
 
         public JsonResult ListagemClientesJson()
         {

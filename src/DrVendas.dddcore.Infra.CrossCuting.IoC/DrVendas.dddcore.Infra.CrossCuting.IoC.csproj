@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DrVendas.dddcore.Application.AppVendas\DrVendas.dddcore.Application.AppVendas.csproj" />
+    <ProjectReference Include="..\DrVendas.dddcore.Application.Shared\DrVendas.dddcore.Application.Shared.csproj" />
     <ProjectReference Include="..\DrVendas.dddcore.Domain.Shared\DrVendas.dddcore.Domain.Shared.csproj" />
     <ProjectReference Include="..\DrVendas.dddcore.Domain\DrVendas.dddcore.Domain.csproj" />
     <ProjectReference Include="..\DrVendas.dddcore.Infra.Data\DrVendas.dddcore.Infra.Data.csproj" />
