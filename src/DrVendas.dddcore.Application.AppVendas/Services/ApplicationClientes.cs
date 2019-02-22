@@ -4,6 +4,7 @@ using DrVendas.dddcore.Application.AppVendas.ViewModels;
 using DrVendas.dddcore.Domain.Entidades;
 using DrVendas.dddcore.Domain.Interfaces.Services;
 using DrVendas.dddcore.Infra.CrossCutting.Extensions;
+using DrVendas.dddcore.Infra.Data.Interfaces;
 using System;
 using System.Collections.Generic;
 
@@ -13,17 +14,22 @@ namespace DrVendas.dddcore.Application.AppVendas.Services
     {
         private readonly IServiceCliente serviceclientes;
         private readonly IMapper mapper;
+        private readonly IUnitOfWork uow;
 
         public ApplicationClientes(IServiceCliente _serviceclientes,
-                                   IMapper _mapper)
+                                   IMapper _mapper,
+                                    IUnitOfWork _uow)
         {
             serviceclientes = _serviceclientes;
             mapper = _mapper;
+            uow = _uow;
         }
 
         public ClienteViewModel Adicionar(ClienteViewModel cliente)
         {
-            return mapper.Map<ClienteViewModel>(serviceclientes.Adicionar(mapper.Map<Cliente>(cliente)));
+            var clienteresult = mapper.Map<ClienteViewModel>(serviceclientes.Adicionar(mapper.Map<Cliente>(cliente)));
+            uow.Commit(clienteresult.ListaErros);
+            return mapper.Map<ClienteViewModel>(clienteresult);
         }
 
         public ClienteViewModel Atualizar(ClienteViewModel cliente)

@@ -22,3 +22,22 @@
         </div>
     </div>
 </div>
+
+
+@section Scripts {
+    @Html.Partial("_ValidationScriptsPartial");
+    @if (@ViewBag.RetornoPost != "" && @ViewBag.RetornoPost != null)
+    {
+        var notificacao = ViewBag.RetornoPost.Split(',');
+        <script>
+            ExibeMensagem("@notificacao[0]", "@notificacao[1]");
+            var limpa = "@notificacao[0]";
+            if (limpa == 'success') {
+               clearForm();
+                $("#Apelido").focus();
+            }
+        </script>
+    }
+
+}
+

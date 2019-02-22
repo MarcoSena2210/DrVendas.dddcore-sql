@@ -15,6 +15,8 @@ using DrVendas.dddcore.Infra.Data.Repository;
 using DrVendas.dddcore.Infra.Data.Repository.AgregacaoPedido;
 using DrVendas.dddcore.Application.Shared.Interfaces;
 using DrVendas.dddcore.Application.Shared.Services;
+using DrVendas.dddcore.Infra.Data.Interfaces;
+using DrVendas.dddcore.Infra.Data.uOw;
 
 namespace DrVendas.dddcore.Infra.CrossCuting.IoC
 {
@@ -44,12 +46,10 @@ namespace DrVendas.dddcore.Infra.CrossCuting.IoC
             service.AddScoped<IRepositoryFornecedor, RepositoryFornecedor>();
             service.AddScoped<IRepositoryProduto, RepositoryProduto>();
             service.AddScoped<IRepositoryPedido, RepositoryPedido>();
-            service.AddScoped<IServicePedido, ServicePedido>();
+            service.AddScoped<IUnitOfWork, UnitOfWork>();
 
             service.AddScoped<ContextEFSQLServer>();
-
-
-        }
+         }
 
     }
 }

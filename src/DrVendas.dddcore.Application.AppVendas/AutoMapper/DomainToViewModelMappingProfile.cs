@@ -22,6 +22,7 @@ namespace DrVendas.dddcore.Application.AppVendas.AutoMapper
                      return new ClienteViewModel
                      {
                          Id = src.Id,
+                         ListaErros = src.ListaErros,
                          Apelido = src.Apelido,
                          Nome = src.Nome,
                          CpfCnpj = src.CPFCNPJ.Numero.FormatoCpfCnpj(),
@@ -40,7 +41,9 @@ namespace DrVendas.dddcore.Application.AppVendas.AutoMapper
                  {
                      return new FornecedorViewModel
                      {
+                        
                          Id = src.Id,
+                         ListaErros = src.ListaErros,
                          Apelido = src.Apelido,
                          Nome = src.Nome,
                          CpfCnpj = src.CPFCNPJ.Numero.FormatoCpfCnpj(),
@@ -59,6 +62,7 @@ namespace DrVendas.dddcore.Application.AppVendas.AutoMapper
                                   return new ProdutoViewModel
                                   {
                                       Id = src.Id,
+                                      ListaErros = src.ListaErros,
                                       Apelido = src.Apelido,
                                       Nome = src.Nome,
                                       Valor = src.Valor.Formatado("{0:#,###,##0.00}"),

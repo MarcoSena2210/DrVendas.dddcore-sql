@@ -38,8 +38,10 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
         [HttpPost]
         public IActionResult Incluir(ClienteViewModel model)
         {
+
             ViewBag.ListaEstados = appShared.ObterEstados();
-            if (!ModelState.IsValid) return View();  //verifica se ássou por todas validações  ou model
+            if (!ModelState.IsValid) return View();  //verifica se passou por todas validações  ou model
+            var cliente = appClientes.Adicionar(model);
             return View(model);
         }
 

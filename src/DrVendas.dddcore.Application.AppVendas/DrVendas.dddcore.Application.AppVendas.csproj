@@ -14,6 +14,7 @@
     <ProjectReference Include="..\DrVendas.dddcore.Domain.Shared\DrVendas.dddcore.Domain.Shared.csproj" />
     <ProjectReference Include="..\DrVendas.dddcore.Domain\DrVendas.dddcore.Domain.csproj" />
     <ProjectReference Include="..\DrVendas.dddcore.Infra.CrossCutting\DrVendas.dddcore.Infra.CrossCutting.csproj" />
+    <ProjectReference Include="..\DrVendas.dddcore.Infra.Data\DrVendas.dddcore.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

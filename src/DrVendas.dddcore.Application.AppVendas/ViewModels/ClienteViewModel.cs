@@ -28,9 +28,9 @@ namespace DrVendas.dddcore.Application.AppVendas.ViewModels
         public string CpfCnpj { get; set; }
 
         [Display(Name = "E-Mail")]
-        [EmailAddress(ErrorMessage = "Digite um E-Mail válido!")]
+        //[EmailAddress(ErrorMessage = "Digite um E-Mail válido!")]
         [MaxLength(100, ErrorMessage = "Máximo 100 caracteres!")]
-       // [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail não é válido!")]
+        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail não é válido!")]
         public string Email { get; set; }
 
         [Display(Name = "Endereço")]
