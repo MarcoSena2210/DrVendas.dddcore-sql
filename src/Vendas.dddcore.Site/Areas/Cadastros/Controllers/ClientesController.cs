@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
 {
     [Area("Cadastros")]
-    public class ClientesController : Controller
+    public class ClientesController : CadastroBaseController
     {
         /*Para usar o obter todos da camada de aplicação precisamos fazer a injeção de dependências
          * precisa instanciar todas as classe que precisamos, quem faz é o contanner de injecçao de dependencias tem varios
@@ -42,6 +42,14 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
             ViewBag.ListaEstados = appShared.ObterEstados();
             if (!ModelState.IsValid) return View();  //verifica se passou por todas validações  ou model
             var cliente = appClientes.Adicionar(model);
+
+
+            ViewBag.RetornoPost = "success,Cliente incluído com sucesso!";
+            if (VerificaErros(cliente.ListaErros))
+            {
+                ViewBag.RetornoPost = "error,Não foi possível incluir o cliente!";
+            }
+          
             return View(model);
         }
 

@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
 {
     [Area("Cadastros")]
-    public class ProdutosController : Controller
+    public class ProdutosController : CadastroBaseController
     {
         private readonly IApplicationProduto appprodutos;
 

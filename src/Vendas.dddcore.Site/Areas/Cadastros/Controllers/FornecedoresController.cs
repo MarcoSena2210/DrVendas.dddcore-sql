@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
 {
     [Area("Cadastros")]
-    public class FornecedoresController : Controller
+    public class FornecedoresController : CadastroBaseController
     {
         private readonly IApplicationFornecedor appfornecedor;
 

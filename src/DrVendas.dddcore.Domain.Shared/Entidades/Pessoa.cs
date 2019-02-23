@@ -54,7 +54,7 @@ namespace DrVendas.dddcore.Domain.Shared.Entidades
 
         protected void EmailDeveTerUmTamanhoLimite(int tamanho)
         {
-            if (Email.Endereco.Trim().Length > tamanho) ListaErros.Add("O campo e-mail deve ter no máximo " + tamanho + " caracteres!");
+            if (!string.IsNullOrEmpty(Email.Endereco)  && Email.Endereco.Trim().Length > tamanho) ListaErros.Add("O campo e-mail deve ter no máximo " + tamanho + " caracteres!");
         }
 
         protected void EnderecoDeveSerPreenchido()
@@ -69,7 +69,7 @@ namespace DrVendas.dddcore.Domain.Shared.Entidades
 
         protected void BairroDeveTerUmTamanhoLimite(int tamanho)
         {
-            if (Endereco.Bairro.Trim().Length > tamanho) ListaErros.Add("O campo bairro deve ter no máximo " + tamanho + " caracteres!");
+            if  (!string.IsNullOrEmpty(Endereco.Bairro)  && Endereco.Bairro.Trim().Length > tamanho) ListaErros.Add("O campo bairro deve ter no máximo " + tamanho + " caracteres!");
         }
 
         protected void CidadeDeveSerPreenchida()
