@@ -34,8 +34,10 @@ namespace DrVendas.dddcore.Application.AppVendas.Services
 
         public ClienteViewModel Atualizar(ClienteViewModel cliente)
         {
-            return mapper.Map<ClienteViewModel>(serviceclientes.Atualizar(mapper.Map<Cliente>(cliente)));
-        }
+            var clienteresult = mapper.Map<ClienteViewModel>(serviceclientes.Atualizar(mapper.Map<Cliente>(cliente)));
+            uow.Commit(clienteresult.ListaErros);
+            return mapper.Map<ClienteViewModel>(clienteresult);
+         }
 
         public ClienteViewModel Remover(ClienteViewModel cliente)
         {

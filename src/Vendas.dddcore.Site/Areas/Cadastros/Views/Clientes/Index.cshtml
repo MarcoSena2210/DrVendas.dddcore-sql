@@ -52,7 +52,7 @@
                 "width": "2%",
                 "sClass": "text-center",
                 "render": function (id) {
-                    return "<a href='#' class='btn btn-info btn-sm showhint' title='Detalhar registro'><i class='glyphicon glyphicon-search'></i></a>"
+                    return "<a href='" + urlDetalharCliente + "?id=" + id + "' class='btn btn-info btn-sm showhint' title='Detalhar registro'><i class='glyphicon glyphicon-search'></i></a>"
                 }
             },
             {
@@ -62,8 +62,8 @@
                 "width": "2%",
                 "sClass": "text-center",
                 "render": function (id) {
-                    return "<a href='#' class='btn btn-primary btn-sm showhint' title='Alterar registro'><i class='glyphicon glyphicon-pencil'></i></a>"
-                }
+                    return "<a href='" + urlAlterarCliente + "?id=" + id + "' class='btn btn-success btn-sm showhint' title='Alterar registro'><i class='glyphicon glyphicon-pencil'></i></a>"
+                 }
             },
             {
                 "data": "Id",
@@ -72,7 +72,7 @@
                 "width": "2%",
                 "sClass": "text-center",
                 "render": function (id) {
-                    return "<a href='#' class='btn btn-danger btn-sm showhint' title='Excluir registro'><i class='glyphicon glyphicon-trash'></i></a>"
+                    return "<a href='" + urlExcluirCliente + "?id=" + id + "' class='btn btn-danger btn-sm showhint' title='Excluir registro'><i class='glyphicon glyphicon-trash'></i></a>"
                 }
             },
             {

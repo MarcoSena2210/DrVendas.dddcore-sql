@@ -28,6 +28,14 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
                     return View();
         }
 
+        public JsonResult ListagemClientesJson()
+        {
+            var lista = appClientes.ObterTodos();
+            var settings = new JsonSerializerSettings();
+            return Json(lista, settings);
+        }
+
+        #region INCLUIR-CLIENTE
         public IActionResult Incluir()
         {
             //ViewBag =forma de  passar dados para view
@@ -52,13 +60,59 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
           
             return View(model);
         }
+        #endregion FIM-INCLUIR-CLIENTE
 
 
-        public JsonResult ListagemClientesJson()
+       //Route("Pedidos-Clientes-Alterar")]
+        public IActionResult Alterar(int id)
         {
-            var lista = appClientes.ObterTodos();
-            var settings = new JsonSerializerSettings();
-            return Json(lista, settings);
+            ViewBag.ListaEstados = appShared.ObterEstados();
+            var model = appClientes.ObterPorId(id);
+            return View(model);
         }
+
+      //[Route("Pedidos-Clientes-Alterar")]
+        [HttpPost]
+        public IActionResult Alterar(ClienteViewModel model)
+        {
+            ViewBag.ListaEstados = appShared.ObterEstados();
+            if (!ModelState.IsValid) return View();
+            var cliente = appClientes.Atualizar(model);
+            ViewBag.RetornoPost = "success,Cliente alerado com sucesso!";
+            if (VerificaErros(cliente.ListaErros))
+            {
+                ViewBag.RetornoPost = "error,Não foi possível alterar o cliente!";
+            }
+            return View(model);
+        }
+
+     // [Route("Pedidos-Clientes-Detalhar")]
+        public IActionResult Detalhar(int id)
+        {
+            var model = appClientes.ObterPorId(id);
+            return View(model);
+        }
+
+        [Route("Pedidos-Clientes-Excluir")]
+        public IActionResult Excluir(int id)
+        {
+            var model = appClientes.ObterPorId(id);
+            return View(model);
+        }
+
+        [Route("Pedidos-Clientes-Excluir")]
+        [HttpPost]
+        public IActionResult Excluir(ClienteViewModel model)
+        {
+            var cliente = appClientes.Remover(model);
+            TempData["RetornoPost"] = "success,Cliente excluído com sucesso!";
+            if (VerificaErros(cliente.ListaErros))
+            {
+                ViewBag.RetornoPost = "error,Não foi possível excluir o cliente!";
+                return View(model);
+            }
+            return RedirectToAction("Index");
+        }
+
     }
 }
