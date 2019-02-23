@@ -62,8 +62,9 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
         }
         #endregion FIM-INCLUIR-CLIENTE
 
+        #region ALTERAR-CLIENTE
 
-       //Route("Pedidos-Clientes-Alterar")]
+        //Route("Pedidos-Clientes-Alterar")]
         public IActionResult Alterar(int id)
         {
             ViewBag.ListaEstados = appShared.ObterEstados();
@@ -85,13 +86,17 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
             }
             return View(model);
         }
+        #endregion FIM-ALTERAR-CLIENTE
 
-     // [Route("Pedidos-Clientes-Detalhar")]
+        #region DETALHAR-CLIENTE
+
+        // [Route("Pedidos-Clientes-Detalhar")]
         public IActionResult Detalhar(int id)
         {
             var model = appClientes.ObterPorId(id);
             return View(model);
         }
+        #endregion FIM-DETALHAR-CLIENTE
 
         [Route("Pedidos-Clientes-Excluir")]
         public IActionResult Excluir(int id)
