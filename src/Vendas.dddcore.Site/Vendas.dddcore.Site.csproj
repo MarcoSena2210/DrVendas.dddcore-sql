@@ -19,9 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Areas\Cadastros\Views\Fornecedores\Incluir.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
     <Content Update="Areas\Cadastros\Views\Produtos\Incluir.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
