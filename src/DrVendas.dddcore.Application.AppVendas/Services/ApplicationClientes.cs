@@ -27,6 +27,7 @@ namespace DrVendas.dddcore.Application.AppVendas.Services
 
         public ClienteViewModel Adicionar(ClienteViewModel cliente)
         {
+            //Orquestração para ver se vamos comitar ou não
             var clienteresult = mapper.Map<ClienteViewModel>(serviceclientes.Adicionar(mapper.Map<Cliente>(cliente)));
             uow.Commit(clienteresult.ListaErros);
             return mapper.Map<ClienteViewModel>(clienteresult);
@@ -34,6 +35,7 @@ namespace DrVendas.dddcore.Application.AppVendas.Services
 
         public ClienteViewModel Atualizar(ClienteViewModel cliente)
         {
+            //Orquestração para ver se vamos comitar ou não
             var clienteresult = mapper.Map<ClienteViewModel>(serviceclientes.Atualizar(mapper.Map<Cliente>(cliente)));
             uow.Commit(clienteresult.ListaErros);
             return mapper.Map<ClienteViewModel>(clienteresult);
@@ -41,7 +43,10 @@ namespace DrVendas.dddcore.Application.AppVendas.Services
 
         public ClienteViewModel Remover(ClienteViewModel cliente)
         {
-            return mapper.Map<ClienteViewModel>(serviceclientes.Remover(mapper.Map<Cliente>(cliente)));
+            //Orquestração para ver se vamos comitar ou não
+            var clienteresult = mapper.Map<ClienteViewModel>(serviceclientes.Remover(mapper.Map<Cliente>(cliente)));
+            uow.Commit(clienteresult.ListaErros);
+            return mapper.Map<ClienteViewModel>(clienteresult);
         }
 
 

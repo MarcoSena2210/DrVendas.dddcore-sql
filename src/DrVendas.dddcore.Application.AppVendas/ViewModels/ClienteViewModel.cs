@@ -22,7 +22,7 @@ namespace DrVendas.dddcore.Application.AppVendas.ViewModels
         public string Nome { get; set; }
 
         [Display(Name = "CPF ou CNPJ")]
-        [Required(ErrorMessage = "CPF ou CNPJ obrigatório!")]
+      //  [Required(ErrorMessage = "CPF ou CNPJ obrigatório!")]
         [MaxLength(18, ErrorMessage = "Máximo 18 caracteres!")]
         [MinLength(11, ErrorMessage = "Mínimo 11 caracteres!")]
         public string CpfCnpj { get; set; }

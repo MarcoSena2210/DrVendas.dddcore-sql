@@ -23,10 +23,15 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
             appShared = _appShared;
         }
 
+
+        [Route("Cadastro-Clientes-Listagem")]
         public IActionResult Index()
         {
-                    return View();
+            ViewBag.RetornoPost = TempData["RetornoPost"];  //recebe do post do excluir
+            return View();
         }
+
+
 
         public JsonResult ListagemClientesJson()
         {
@@ -36,6 +41,7 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
         }
 
         #region INCLUIR-CLIENTE
+        [Route("Cadastro-Clientes-Incluir")]
         public IActionResult Incluir()
         {
             //ViewBag =forma de  passar dados para view
@@ -90,7 +96,7 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
 
         #region DETALHAR-CLIENTE
 
-        // [Route("Pedidos-Clientes-Detalhar")]
+        [Route("Cadastro-Clientes-Detalhar")]
         public IActionResult Detalhar(int id)
         {
             var model = appClientes.ObterPorId(id);
@@ -98,18 +104,23 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
         }
         #endregion FIM-DETALHAR-CLIENTE
 
-        [Route("Pedidos-Clientes-Excluir")]
+        #region EXCLUIR-CLIENTE
+
+        [Route("Cadastro-Clientes-Excluir")]
         public IActionResult Excluir(int id)
         {
             var model = appClientes.ObterPorId(id);
             return View(model);
         }
 
-        [Route("Pedidos-Clientes-Excluir")]
+        [Route("Cadastro-Clientes-Excluir")]
         [HttpPost]
         public IActionResult Excluir(ClienteViewModel model)
         {
             var cliente = appClientes.Remover(model);
+            // TempData, guarda a mensagem para ser exibido na pagina INDEX 
+            //se ouver 
+            
             TempData["RetornoPost"] = "success,Cliente excluído com sucesso!";
             if (VerificaErros(cliente.ListaErros))
             {
@@ -118,6 +129,8 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        #endregion FIM-EXCLUIR-CLIENTE
 
     }
 }

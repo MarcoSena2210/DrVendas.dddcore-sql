@@ -16,7 +16,7 @@
             </div>
             <div class="panel-body padding-25">
                 <div class="row">
-                    <form asp-action="Alterar">
+                    <form asp-action="Alterar" autocomplete="off">
                         <input asp-area="Cadastros" asp-for="Id" type="hidden">
                         @Html.Partial("_FormClientes")
                     </form>
