@@ -1,6 +1,4 @@
 ﻿@model DrVendas.dddcore.Application.AppVendas.ViewModels.ClienteViewModel
-
-
 <div class="row">
     <div class="col-md-4">
         <div class="form-group">
@@ -34,7 +32,14 @@
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-2">
+        <div class="form-group">
+            <label asp-for="CEP" class="control-label"></label>
+            <input autocomplete="off" asp-for="CEP" class="form-control limpa" readonly="readonly" />
+        </div>
+    </div>
+   
+    <div class="col-md-10">
         <div class="form-group">
             <label asp-for="Endereco" class="control-label"></label>
             <input autocomplete="off" asp-for="Endereco" class="form-control limpa" readonly="readonly" />
@@ -64,13 +69,8 @@
         </div>
     </div>
 
-    <div class="col-md-2">
-        <div class="form-group">
-            <label asp-for="CEP" class="control-label"></label>
-            <input autocomplete="off" asp-for="CEP" class="form-control limpa" readonly="readonly" />
-        </div>
-    </div>
 </div>
+
 
 
 

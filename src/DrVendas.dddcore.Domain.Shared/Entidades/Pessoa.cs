@@ -94,6 +94,7 @@ namespace DrVendas.dddcore.Domain.Shared.Entidades
 
         protected void CepDeveSerValido()
         {
+            if (string.IsNullOrEmpty(Endereco.CEP.Codigo)) ListaErros.Add("CEP deve ser preenchido!");
             if (!Endereco.CEP.Validar(Endereco.CEP.Codigo)) ListaErros.Add("Digite um CEP inválido!");
         }
 

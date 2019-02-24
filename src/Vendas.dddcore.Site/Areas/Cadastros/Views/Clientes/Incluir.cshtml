@@ -1,5 +1,4 @@
 ﻿@model DrVendas.dddcore.Application.AppVendas.ViewModels.ClienteViewModel
-
 @{
     ViewData["Title"] = "Clientes - Inclusão";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -15,15 +14,14 @@
             </div>
             <div class="panel-body padding-25">
                 <div class="row">
-                    <form asp-action="Incluir" autocomplete="off">
-                        @Html.Partial("_formClientes")
+                    <form asp-action="Incluir">
+                        @Html.Partial("_FormClientes")
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
 @section Scripts {
     @Html.Partial("_ValidationScriptsPartial");
@@ -41,4 +39,3 @@
     }
 
 }
-

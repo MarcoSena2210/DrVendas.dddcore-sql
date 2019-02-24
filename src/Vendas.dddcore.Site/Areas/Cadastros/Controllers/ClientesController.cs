@@ -14,7 +14,6 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
          * como inject, vamos usar o nativo do dotnet, na camada de cross cutting*/
 
         public readonly IApplicationCliente appClientes;
-
         public readonly IApplicationShared appShared;
 
         public ClientesController(IApplicationCliente _appClientes, IApplicationShared _appShared)
@@ -22,16 +21,13 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
             appClientes = _appClientes;
             appShared = _appShared;
         }
-
-
+        
         [Route("Cadastro-Clientes-Listagem")]
         public IActionResult Index()
         {
             ViewBag.RetornoPost = TempData["RetornoPost"];  //recebe do post do excluir
             return View();
         }
-
-
 
         public JsonResult ListagemClientesJson()
         {
@@ -49,28 +45,25 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
             return View();
         }
 
+        [Route("Cadastro-Clientes-Incluir")]
         [HttpPost]
         public IActionResult Incluir(ClienteViewModel model)
         {
-
             ViewBag.ListaEstados = appShared.ObterEstados();
             if (!ModelState.IsValid) return View();  //verifica se passou por todas validações  ou model
             var cliente = appClientes.Adicionar(model);
-
-
             ViewBag.RetornoPost = "success,Cliente incluído com sucesso!";
             if (VerificaErros(cliente.ListaErros))
             {
                 ViewBag.RetornoPost = "error,Não foi possível incluir o cliente!";
             }
-          
-            return View(model);
+             return View(model);
         }
         #endregion FIM-INCLUIR-CLIENTE
 
         #region ALTERAR-CLIENTE
 
-        //Route("Pedidos-Clientes-Alterar")]
+        [Route("Cadastro-Clientes-Alterar")]
         public IActionResult Alterar(int id)
         {
             ViewBag.ListaEstados = appShared.ObterEstados();
@@ -78,7 +71,7 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
             return View(model);
         }
 
-      //[Route("Pedidos-Clientes-Alterar")]
+        [Route("Cadastro-Clientes-Alterar")]
         [HttpPost]
         public IActionResult Alterar(ClienteViewModel model)
         {
@@ -95,7 +88,6 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
         #endregion FIM-ALTERAR-CLIENTE
 
         #region DETALHAR-CLIENTE
-
         [Route("Cadastro-Clientes-Detalhar")]
         public IActionResult Detalhar(int id)
         {
@@ -105,7 +97,6 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
         #endregion FIM-DETALHAR-CLIENTE
 
         #region EXCLUIR-CLIENTE
-
         [Route("Cadastro-Clientes-Excluir")]
         public IActionResult Excluir(int id)
         {
@@ -117,10 +108,9 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
         [HttpPost]
         public IActionResult Excluir(ClienteViewModel model)
         {
-            var cliente = appClientes.Remover(model);
             // TempData, guarda a mensagem para ser exibido na pagina INDEX 
-            //se ouver 
-            
+            //se houver 
+            var cliente = appClientes.Remover(model);
             TempData["RetornoPost"] = "success,Cliente excluído com sucesso!";
             if (VerificaErros(cliente.ListaErros))
             {
@@ -129,7 +119,6 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
             }
             return RedirectToAction("Index");
         }
-
         #endregion FIM-EXCLUIR-CLIENTE
 
     }
