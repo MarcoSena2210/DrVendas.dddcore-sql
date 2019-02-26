@@ -59,17 +59,20 @@ namespace DrVendas.dddcore.Infra.Data.Repository
         private Fornecedor AtribuirFornecedor(Fornecedor fornecedor, SqlDataReader reader)
         {
             fornecedor.Id = reader.GetInt32(0);
-            fornecedor.Apelido = reader.GetString(1);
-            fornecedor.Nome = reader.GetString(2);
-            fornecedor.CPFCNPJ.Numero = reader.GetString(3);
-            fornecedor.Email.Endereco = reader.GetString(4);
-            fornecedor.Endereco.Logradouro = reader.GetString(5);
-            fornecedor.Endereco.Bairro = reader.GetString(6);
-            fornecedor.Endereco.Cidade = reader.GetString(7);
-            fornecedor.Endereco.UF.UF = reader.GetString(8);
-            fornecedor.Endereco.CEP.Codigo = reader.GetString(9);
-            return fornecedor;
+            fornecedor.Apelido = reader.SafeGetString(1);
+            fornecedor.Nome = reader.SafeGetString(2);
+            fornecedor.CPFCNPJ.Numero = reader.SafeGetString(3);
+            fornecedor.Email.Endereco = reader.SafeGetString(4);
+            fornecedor.Endereco.Logradouro = reader.SafeGetString(5);
+            fornecedor.Endereco.Bairro = reader.SafeGetString(6);
+            fornecedor.Endereco.Cidade = reader.SafeGetString(7);
+            fornecedor.Endereco.UF.UF = reader.SafeGetString(8);
+            fornecedor.Endereco.CEP.Codigo = reader.SafeGetString(9);
+             return fornecedor;
         }
+
+
+
 
         private IEnumerable<Fornecedor> ExecutarDataReader(SqlParameter[] param, string sql)
         {

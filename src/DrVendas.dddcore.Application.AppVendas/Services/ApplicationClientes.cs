@@ -24,7 +24,7 @@ namespace DrVendas.dddcore.Application.AppVendas.Services
             mapper = _mapper;
             uow = _uow;
         }
-
+        #region Adicionar 
         public ClienteViewModel Adicionar(ClienteViewModel cliente)
         {
             //Orquestração para ver se vamos comitar ou não
@@ -32,7 +32,9 @@ namespace DrVendas.dddcore.Application.AppVendas.Services
             uow.Commit(clienteresult.ListaErros);
             return mapper.Map<ClienteViewModel>(clienteresult);
         }
+        #endregion
 
+        #region Atualizar 
         public ClienteViewModel Atualizar(ClienteViewModel cliente)
         {
             //Orquestração para ver se vamos comitar ou não
@@ -40,7 +42,9 @@ namespace DrVendas.dddcore.Application.AppVendas.Services
             uow.Commit(clienteresult.ListaErros);
             return mapper.Map<ClienteViewModel>(clienteresult);
          }
+        #endregion
 
+        #region Remover
         public ClienteViewModel Remover(ClienteViewModel cliente)
         {
             //Orquestração para ver se vamos comitar ou não
@@ -48,7 +52,9 @@ namespace DrVendas.dddcore.Application.AppVendas.Services
             uow.Commit(clienteresult.ListaErros);
             return mapper.Map<ClienteViewModel>(clienteresult);
         }
+        #endregion
 
+        #region Consultas
 
         public IEnumerable<ClienteViewModel> ObterTodos()
         {
@@ -69,6 +75,7 @@ namespace DrVendas.dddcore.Application.AppVendas.Services
         {
             return mapper.Map<ClienteViewModel>(serviceclientes.ObterPorCpfCnpj(cpfcnpj.SomenteNumeros()));
         }
+        #endregion
 
         public void Dispose()
         {

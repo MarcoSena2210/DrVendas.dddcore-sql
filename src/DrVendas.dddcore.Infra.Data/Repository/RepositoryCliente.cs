@@ -82,15 +82,15 @@ namespace DrVendas.dddcore.Infra.Data.Repository
         private Cliente AtribuirCliente(Cliente cliente, SqlDataReader reader)
         {
             cliente.Id = reader.GetInt32(0);
-            cliente.Apelido = reader.GetString(1);
-            cliente.Nome = reader.GetString(2);
-            cliente.CPFCNPJ.Numero = reader.GetString(3);
-            cliente.Email.Endereco = reader.GetString(4);
-            cliente.Endereco.Logradouro = reader.GetString(5);
-            cliente.Endereco.Bairro = reader.GetString(6);
-            cliente.Endereco.Cidade = reader.GetString(7);
-            cliente.Endereco.UF.UF = reader.GetString(8);
-            cliente.Endereco.CEP.Codigo = reader.GetString(9);
+            cliente.Apelido = reader.SafeGetString(1);
+            cliente.Nome = reader.SafeGetString(2);
+            cliente.CPFCNPJ.Numero = reader.SafeGetString(3);
+            cliente.Email.Endereco = reader.SafeGetString(4);
+            cliente.Endereco.Logradouro = reader.SafeGetString(5);
+            cliente.Endereco.Bairro = reader.SafeGetString(6);
+            cliente.Endereco.Cidade = reader.SafeGetString(7);
+            cliente.Endereco.UF.UF = reader.SafeGetString(8);
+            cliente.Endereco.CEP.Codigo = reader.SafeGetString(9);
             return cliente;
         }
 

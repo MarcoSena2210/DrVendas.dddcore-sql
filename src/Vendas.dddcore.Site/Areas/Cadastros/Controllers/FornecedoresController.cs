@@ -37,7 +37,7 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
         #endregion
 
         #region INCLUIR-CLIENTE
-        [Route("Cadastro-Clientes-Incluir")]
+        [Route("Cadastro-Fornecedores-Incluir")]
         public IActionResult Incluir()
         {
             //ViewBag =forma de  passar dados para view
@@ -94,6 +94,7 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
             var model = appFornecedores.ObterPorId(id);
             return View(model);
         }
+
         #endregion FIM-DETALHAR-CLIENTE
 
         #region EXCLUIR-FORNECEDOR

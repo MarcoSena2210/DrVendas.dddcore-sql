@@ -26,6 +26,11 @@ namespace DrVendas.dddcore.Domain.Services
             if (fornecedor.ListaErros.Any()) return fornecedor;
             repofornecedor.Adicionar(fornecedor);
             return fornecedor;
+
+            fornecedor = AptoParaAdicionarFornecedor(fornecedor);
+            if (fornecedor.ListaErros.Any()) return fornecedor;
+            repofornecedor.Adicionar(fornecedor);
+            return fornecedor;
         }
 
         private Fornecedor AptoParaAdicionarFornecedor(Fornecedor fornecedor)
@@ -122,7 +127,7 @@ namespace DrVendas.dddcore.Domain.Services
 
         public Fornecedor ObterPorCpfCnpj(string cpfcnpj)
         {
-            return ObterPorCpfCnpj(cpfcnpj);
+            return repofornecedor.ObterPorCpfCnpj(cpfcnpj);
         }
 
         #endregion consulta fornecedores

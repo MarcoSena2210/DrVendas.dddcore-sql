@@ -23,7 +23,7 @@ namespace DrVendas.dddcore.Domain.Shared.Entidades
 
         protected void ApelidoDeveTerUmTamanhoLimite(int tamanho)
         {
-            if (Apelido.Trim().Length > tamanho) ListaErros.Add("O campo apelido deve ter no máximo " + tamanho + " caracteres!");
+            if (!string.IsNullOrEmpty(Apelido) && Apelido.Trim().Length > tamanho) ListaErros.Add("O campo apelido deve ter no máximo " + tamanho + " caracteres!");
         }
 
         protected void NomeDeveSerPreenchido()
@@ -33,7 +33,7 @@ namespace DrVendas.dddcore.Domain.Shared.Entidades
 
         protected void NomeDeveTerUmTamanhoLimite(int tamanho)
         {
-            if (Nome.Trim().Length > tamanho) ListaErros.Add("O campo nome deve ter no máximo " + tamanho + " caracteres!");
+            if (!string.IsNullOrEmpty(Nome) && Nome.Trim().Length > tamanho) ListaErros.Add("O campo nome deve ter no máximo " + tamanho + " caracteres!");
         }
 
 
@@ -54,7 +54,7 @@ namespace DrVendas.dddcore.Domain.Shared.Entidades
 
         protected void EmailDeveTerUmTamanhoLimite(int tamanho)
         {
-            if (!string.IsNullOrEmpty(Email.Endereco)  && Email.Endereco.Trim().Length > tamanho) ListaErros.Add("O campo e-mail deve ter no máximo " + tamanho + " caracteres!");
+            if (!string.IsNullOrEmpty(Email.Endereco) && Email.Endereco.Trim().Length > tamanho) ListaErros.Add("O campo e-mail deve ter no máximo " + tamanho + " caracteres!");
         }
 
         protected void EnderecoDeveSerPreenchido()
@@ -64,12 +64,12 @@ namespace DrVendas.dddcore.Domain.Shared.Entidades
 
         protected void EnderecoDeveTerUmTamanhoLimite(int tamanho)
         {
-            if (Endereco.Logradouro.Trim().Length > tamanho) ListaErros.Add("O campo endereço deve ter no máximo " + tamanho + " caracteres!");
+            if (!string.IsNullOrEmpty(Endereco.Logradouro) && Endereco.Logradouro.Trim().Length > tamanho) ListaErros.Add("O campo endereço deve ter no máximo " + tamanho + " caracteres!");
         }
 
         protected void BairroDeveTerUmTamanhoLimite(int tamanho)
         {
-            if  (!string.IsNullOrEmpty(Endereco.Bairro)  && Endereco.Bairro.Trim().Length > tamanho) ListaErros.Add("O campo bairro deve ter no máximo " + tamanho + " caracteres!");
+            if (!string.IsNullOrEmpty(Endereco.Bairro) && Endereco.Bairro.Trim().Length > tamanho) ListaErros.Add("O campo bairro deve ter no máximo " + tamanho + " caracteres!");
         }
 
         protected void CidadeDeveSerPreenchida()
@@ -79,7 +79,7 @@ namespace DrVendas.dddcore.Domain.Shared.Entidades
 
         protected void CidadeDeveTerUmTamanhoLimite(int tamanho)
         {
-            if (Endereco.Cidade.Trim().Length > tamanho) ListaErros.Add("O campo cidade deve ter no máximo " + tamanho + " caracteres!");
+            if (!string.IsNullOrEmpty(Endereco.Cidade) && Endereco.Cidade.Trim().Length > tamanho) ListaErros.Add("O campo cidade deve ter no máximo " + tamanho + " caracteres!");
         }
 
         protected void UFDeveSerPreenchida()
@@ -94,7 +94,6 @@ namespace DrVendas.dddcore.Domain.Shared.Entidades
 
         protected void CepDeveSerValido()
         {
-            if (string.IsNullOrEmpty(Endereco.CEP.Codigo)) ListaErros.Add("CEP deve ser preenchido!");
             if (!Endereco.CEP.Validar(Endereco.CEP.Codigo)) ListaErros.Add("Digite um CEP inválido!");
         }
 
