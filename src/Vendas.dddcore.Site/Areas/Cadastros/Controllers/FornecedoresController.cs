@@ -98,7 +98,7 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
         #endregion FIM-DETALHAR-CLIENTE
 
         #region EXCLUIR-FORNECEDOR
-        [Route("Cadastro-Fornecedor-Excluir")]
+        [Route("Cadastro-Fornecedores-Excluir")]
         public IActionResult Excluir(int id)
         {
             var model = appFornecedores.ObterPorId(id);
