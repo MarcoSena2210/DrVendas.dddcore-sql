@@ -4,6 +4,15 @@
     $('.int3').mask("000", { reverse: true });
 });
 
+function ConfigData() {
+    $(".data").datepicker({
+        format: "dd/mm/yyyy",
+        language: "pt-BR",
+        orientation: "bottom left",
+        autoclose: true,
+        useCurrent: true
+    });
+}
 function ListagemConsulta(table, url, colunas) {
     LigaAguarde();
     $('#' + table).dataTable().fnDestroy();

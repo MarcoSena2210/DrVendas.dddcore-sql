@@ -80,8 +80,8 @@ namespace DrVendas.dddcore.Application.AppVendas.AutoMapper
 
             CreateMap<PedidoDTO, PedidoViewModel>() //será usado para algumas consultas
                    .ForMember(to => to.DataPedido, opt => opt.MapFrom(from => from.DataPedido.Formatado("{0:dd/MM/yyyy}")))
-                   .ForMember(to => to.DataEntrega, opt => opt.MapFrom(from => from.DataEntrega.Formatado("{0:dd/MM/yyyy}")))
-                   .ForMember(to => to.ValorTotalProdutos, opt => opt.MapFrom(from => from.ValorTotalProdutos.Formatado("{0:#,###,##0.00}")));
+                   .ForMember(to => to.DataEntrega, opt => opt.MapFrom(from => from.DataEntrega.Formatado("{0:dd/MM/yyyy}")));
+              //     .ForMember(to => to.ValorTotalProdutos, opt => opt.MapFrom(from => from.ValorTotalProdutos.Formatado("{0:#,###,##0.00}")));
 
             CreateMap<ItemPedido, ItemPedidoViewModel>();
 

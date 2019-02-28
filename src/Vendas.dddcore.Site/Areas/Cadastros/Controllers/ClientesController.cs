@@ -29,7 +29,7 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
         [Route("Cadastro-Clientes-Listagem")]
         public IActionResult Index()
         {
-            ViewBag.RetornoPost = TempData["RetornoPost"];  //recebe do post do excluir
+            ViewBag.RetornoPost = TempData["RetornoPost"];  //recebe do post 
             return View();
         }
 
