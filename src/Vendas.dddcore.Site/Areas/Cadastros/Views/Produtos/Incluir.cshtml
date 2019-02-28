@@ -39,10 +39,21 @@
                         </div>
 
                         <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Descricao" class="control-label"></label>
+                                    <input asp-for="Descricao" class="form-control limpa" />
+                                    <span asp-validation-for="Descricao" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label asp-for="Unidade" class="control-label"></label>
-                                    <select autocomplete="off" asp-for="Unidade" class="form-control">
+                                    <select autocomplete="off" asp-for="Unidade" class="form-control limpa">
                                         <option value="" selected>-- Selecione --</option>
                                         <option value="CM">Cm</option>
                                         <option value="G">G</option>
@@ -57,14 +68,14 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label asp-for="Valor" class="control-label"></label>
-                                    <input asp-for="Valor" class="form-control moeda text-right" />
+                                    <input asp-for="Valor" class="form-control moeda text-right limpa" />
                                     <span asp-validation-for="Valor" class="text-danger"></span>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <label asp-for="FornecedorId" class="control-label"></label>
-                                <select autocomplete="off" asp-for="FornecedorId" asp-items="@ViewBag.ListaFornecedores" class="form-control">
+                                <select autocomplete="off" asp-for="FornecedorId" asp-items="@ViewBag.ListaFornecedores" class="form-control limpa">
                                     <option value="">-- Selecione --</option>
                                 </select>
                                 <span asp-validation-for="FornecedorId" class="text-danger"></span>

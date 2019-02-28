@@ -37,6 +37,16 @@
                         </div>
 
                         <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Descricao" class="control-label"></label>
+                                    <input asp-for="Descricao" class="form-control limpa" />
+                                    <span asp-validation-for="Descricao" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label asp-for="Unidade" class="control-label"></label>
@@ -100,7 +110,7 @@
                             </div>
 
                             <div class="col-md-2">
-                                <a asp-area="Cadastros" onclick="return LigaAguarde()" asp-controller="Produtos" asp-action="Index" class="btn  btn-block btn-default"><i class="glyphicon glyphicon-arrow-left"></i> Voltar</a></a>
+                                <a asp-area="Cadastros" onclick="return LigaAguarde()" asp-controller="Produtos" asp-action="Index" class="btn  btn-block btn-warning"><i class="glyphicon glyphicon-arrow-left"></i> Voltar</a></a>
                             </div>
                         </div>
 

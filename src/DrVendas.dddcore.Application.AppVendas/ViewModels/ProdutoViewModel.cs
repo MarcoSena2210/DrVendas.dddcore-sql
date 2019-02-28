@@ -26,6 +26,9 @@ namespace DrVendas.dddcore.Application.AppVendas.ViewModels
         [Display(Name = "Valor do Produto")]
         public string Valor { get; set; }
 
+        [Display(Name = "Descrição   do Produto")]
+        public string Descricao { get; set; }
+        
         [MaxLength(2, ErrorMessage = "Máximo 2 caracteres!")]
         public string Unidade { get; set; }
 

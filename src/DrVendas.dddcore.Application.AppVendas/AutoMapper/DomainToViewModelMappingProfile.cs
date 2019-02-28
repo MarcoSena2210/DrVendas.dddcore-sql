@@ -65,6 +65,7 @@ namespace DrVendas.dddcore.Application.AppVendas.AutoMapper
                                       Id = src.Id,
                                       Apelido = src.Apelido,
                                       Nome = src.Nome,
+                                      Descricao =src.Descricao,
                                       Valor = src.Valor.Formatado("{0:#,###,##0.00}"),
                                       Unidade = src.Unidade,
                                       FornecedorId = src.FornecedorId.ToString(),
