@@ -77,9 +77,9 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
                     model.Foto = ms.ToArray();
                 }
             }
-            #endregion Incluir
+         #endregion Incluir
 
-            #region Adicionar
+        #region Adicionar
             var produto = appProdutos.Adicionar(model);
             ViewBag.RetornoPost = "success,Produto incluído com sucesso!";
             if (VerificaErros(produto.ListaErros))
@@ -90,6 +90,7 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
         }
         #endregion Adicionar
 
+        #region Alterar 
         [Route("Cadastro-Produtos-Alterar")]
         public IActionResult Alterar(int id)
         {
@@ -125,8 +126,9 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
             }
             return View(model);
         }
+        #endregion Alterar
 
-
+        #region Detalhar
         [Route("Cadastro-Produtos-Detalhar")]
         public IActionResult Detalhar(int id)
         {
@@ -135,6 +137,9 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
             return View(model);
         }
 
+        #endregion  Detalhar
+
+        #region Excluir
         [Route("Cadastro-Produtos-Excluir")]
         public IActionResult Excluir(int id)
         {
@@ -157,6 +162,7 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
             return RedirectToAction("Index");
         }
 
+        #endregion Excluir
 
         public IActionResult GetFoto(int id)
         {

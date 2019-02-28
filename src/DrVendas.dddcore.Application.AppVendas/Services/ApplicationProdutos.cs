@@ -40,7 +40,9 @@ namespace DrVendas.dddcore.Application.AppVendas.Services
 
         public ProdutoViewModel Remover(ProdutoViewModel produto)
         {
-            return mapper.Map<ProdutoViewModel>(serviceProdutos.Remover(mapper.Map<Produto>(produto)));
+            var produtoresult = mapper.Map<ProdutoViewModel>(serviceProdutos.Remover(mapper.Map<Produto>(produto)));
+            uow.Commit(produtoresult.ListaErros);
+            return mapper.Map<ProdutoViewModel>(produtoresult);
         }
 
         public IEnumerable<ProdutoViewModel> ObterTodos()

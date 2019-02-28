@@ -30,6 +30,7 @@ namespace DrVendas.dddcore.Infra.Data.Repository
                               Nome = p.Nome,
                               Valor = p.Valor,
                               Unidade = p.Unidade,
+                              FornecedorId =p.FornecedorId,
                               Fornecedor = new Fornecedor {
                                   Nome = f.Nome
                               }

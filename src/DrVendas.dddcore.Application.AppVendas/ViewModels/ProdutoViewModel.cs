@@ -26,6 +26,7 @@ namespace DrVendas.dddcore.Application.AppVendas.ViewModels
         [Display(Name = "Valor do Produto")]
         public string Valor { get; set; }
 
+        [Required(ErrorMessage = "Descrição é obrigatório!")]
         [Display(Name = "Descrição   do Produto")]
         public string Descricao { get; set; }
         

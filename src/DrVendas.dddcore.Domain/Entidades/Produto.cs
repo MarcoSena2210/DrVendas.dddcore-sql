@@ -58,21 +58,19 @@ namespace DrVendas.dddcore.Domain.Entidades
 
         private void DescricaoDeveSerPreenchido()
         {
-            if (string.IsNullOrEmpty(Descricao)) ListaErros.Add("O campo descrição deve ser preenchido!");
+                  if (string.IsNullOrEmpty(Descricao)) ListaErros.Add("O campo descrição deve ser preenchido!");
         }
 
         private void DescricaoDeveTerUmTamanhoLimite()
         {
-            if (Descricao.Length > 150) ListaErros.Add("O campo descrição deve ter no máximo 150 caracteres!");
+            if (!string.IsNullOrEmpty(Descricao) && Descricao.Length > 150) ListaErros.Add("O campo descrição deve ter no máximo 150 caracteres!");
         }
-
 
         private void ValorDeverSerSuperiorAZero()
         {
             if (Valor <= 0) ListaErros.Add("O campo valor dever ser maior que zero!");
         }
-
-
+        
         private void UnidadeDeveSerValida()
         {
             var listunidade = new List<string> { "CM","G ","KG", "M", "UN" };
