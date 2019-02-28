@@ -1,4 +1,10 @@
-﻿function ListagemConsulta(table, url, colunas) {
+﻿$(document).ready(function () {
+    $('.moeda').mask("#.##0,00", { reverse: true });
+    $('.data').mask("00/00/0000", { reverse: false });
+    $('.int3').mask("000", { reverse: true });
+});
+
+function ListagemConsulta(table, url, colunas) {
     LigaAguarde();
     $('#' + table).dataTable().fnDestroy();
     $.ajax({

@@ -13,8 +13,8 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
         public readonly IApplicationShared appShared;
 
 
-        public FornecedoresController(IApplicationFornecedor _appFornecedores
-                                                         ,IApplicationShared _appShared)
+        public FornecedoresController(IApplicationFornecedor _appFornecedores,
+                                                         IApplicationShared _appShared)
         {
             appFornecedores  = _appFornecedores;
             appShared = _appShared;
@@ -36,7 +36,7 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
         }
         #endregion
 
-        #region INCLUIR-CLIENTE
+        #region Incluir-Fornecedor
         [Route("Cadastro-Fornecedores-Incluir")]
         public IActionResult Incluir()
         {

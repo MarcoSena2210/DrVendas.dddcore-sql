@@ -19,6 +19,60 @@ namespace DrVendas.dddcore.Infra.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("DrVendas.dddcore.Domain.Entidades.AgregacaoPedido.ItemPedido", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("PedidoId");
+
+                    b.Property<int>("ProdutoId");
+
+                    b.Property<int>("Qtd");
+
+                    b.Property<decimal>("ValorItem")
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<decimal>("ValorTotalItem")
+                        .HasColumnType("decimal(10,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PedidoId");
+
+                    b.HasIndex("ProdutoId");
+
+                    b.ToTable("ItemPedido");
+                });
+
+            modelBuilder.Entity("DrVendas.dddcore.Domain.Entidades.AgregacaoPedido.Pedido", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ClienteId");
+
+                    b.Property<DateTime?>("DataEntrega")
+                        .HasColumnType("DateTime");
+
+                    b.Property<DateTime>("DataPedido")
+                        .HasColumnType("DateTime");
+
+                    b.Property<string>("Observacao")
+                        .HasColumnType("varchar(4000)");
+
+                    b.Property<decimal>("ValorTotalPedido")
+                        .HasColumnType("decimal(10,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClienteId");
+
+                    b.ToTable("Pedido");
+                });
+
             modelBuilder.Entity("DrVendas.dddcore.Domain.Entidades.Cliente", b =>
                 {
                     b.Property<int>("Id")
@@ -63,60 +117,6 @@ namespace DrVendas.dddcore.Infra.Data.Migrations
                     b.ToTable("Fornecedor");
                 });
 
-            modelBuilder.Entity("DrVendas.dddcore.Domain.Entidades.ItemPedido", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("PedidoId");
-
-                    b.Property<int>("ProdutoId");
-
-                    b.Property<int>("Qtd");
-
-                    b.Property<decimal>("ValorItem")
-                        .HasColumnType("decimal");
-
-                    b.Property<decimal>("ValorTotalItem")
-                        .HasColumnType("decimal");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PedidoId");
-
-                    b.HasIndex("ProdutoId");
-
-                    b.ToTable("ItemPedido");
-                });
-
-            modelBuilder.Entity("DrVendas.dddcore.Domain.Entidades.Pedido", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ClienteId");
-
-                    b.Property<DateTime?>("DataEntrega")
-                        .HasColumnType("DateTime");
-
-                    b.Property<DateTime>("DataPedido")
-                        .HasColumnType("DateTime");
-
-                    b.Property<string>("Observacao")
-                        .HasColumnType("varchar(4000)");
-
-                    b.Property<decimal>("ValorTotalPedido")
-                        .HasColumnType("decimal");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClienteId");
-
-                    b.ToTable("Pedido");
-                });
-
             modelBuilder.Entity("DrVendas.dddcore.Domain.Entidades.Produto", b =>
                 {
                     b.Property<int>("Id")
@@ -132,6 +132,9 @@ namespace DrVendas.dddcore.Infra.Data.Migrations
                         .HasColumnType("varchar(150)");
 
                     b.Property<int>("FornecedorId");
+
+                    b.Property<byte[]>("Foto")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -149,6 +152,27 @@ namespace DrVendas.dddcore.Infra.Data.Migrations
                     b.HasIndex("FornecedorId");
 
                     b.ToTable("Produto");
+                });
+
+            modelBuilder.Entity("DrVendas.dddcore.Domain.Entidades.AgregacaoPedido.ItemPedido", b =>
+                {
+                    b.HasOne("DrVendas.dddcore.Domain.Entidades.AgregacaoPedido.Pedido", "Pedido")
+                        .WithMany("ItensPedidos")
+                        .HasForeignKey("PedidoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DrVendas.dddcore.Domain.Entidades.Produto", "Produto")
+                        .WithMany("ItensPedidos")
+                        .HasForeignKey("ProdutoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("DrVendas.dddcore.Domain.Entidades.AgregacaoPedido.Pedido", b =>
+                {
+                    b.HasOne("DrVendas.dddcore.Domain.Entidades.Cliente", "Cliente")
+                        .WithMany("Pedidos")
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("DrVendas.dddcore.Domain.Entidades.Cliente", b =>
@@ -365,27 +389,6 @@ namespace DrVendas.dddcore.Infra.Data.Migrations
                                         .OnDelete(DeleteBehavior.Cascade);
                                 });
                         });
-                });
-
-            modelBuilder.Entity("DrVendas.dddcore.Domain.Entidades.ItemPedido", b =>
-                {
-                    b.HasOne("DrVendas.dddcore.Domain.Entidades.Pedido", "Pedido")
-                        .WithMany("ItensPedidos")
-                        .HasForeignKey("PedidoId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("DrVendas.dddcore.Domain.Entidades.Produto", "Produto")
-                        .WithMany("ItensPedidos")
-                        .HasForeignKey("ProdutoId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("DrVendas.dddcore.Domain.Entidades.Pedido", b =>
-                {
-                    b.HasOne("DrVendas.dddcore.Domain.Entidades.Cliente", "Cliente")
-                        .WithMany("Pedidos")
-                        .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("DrVendas.dddcore.Domain.Entidades.Produto", b =>

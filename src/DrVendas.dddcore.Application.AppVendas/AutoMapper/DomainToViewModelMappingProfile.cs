@@ -61,14 +61,15 @@ namespace DrVendas.dddcore.Application.AppVendas.AutoMapper
                               {
                                   return new ProdutoViewModel
                                   {
-                                      Id = src.Id,
                                       ListaErros = src.ListaErros,
+                                      Id = src.Id,
                                       Apelido = src.Apelido,
                                       Nome = src.Nome,
                                       Valor = src.Valor.Formatado("{0:#,###,##0.00}"),
                                       Unidade = src.Unidade,
-                                      IdFornecedor = src.FornecedorId,
-                                      NomeFornecedor = src.Fornecedor.Nome
+                                      FornecedorId = src.FornecedorId.ToString(),
+                                      NomeFornecedor = src.Fornecedor != null ? src.Fornecedor.Nome : "",
+                                      Foto = src.Foto
                                   };
                               });
             

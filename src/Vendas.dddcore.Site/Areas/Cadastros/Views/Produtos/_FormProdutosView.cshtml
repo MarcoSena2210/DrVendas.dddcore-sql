@@ -1,0 +1,60 @@
+﻿@model DrVendas.dddcore.Application.AppVendas.ViewModels.ProdutoViewModel
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="Apelido" class="control-label"></label>
+            <input asp-for="Apelido" class="form-control limpa" autocomplete="off">
+            <span asp-validation-for="Apelido" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="form-group">
+            <label asp-for="Nome" class="control-label"></label>
+            <input asp-for="Nome" class="form-control  limpa" autocomplete="off">
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="Valor" class="control-label"></label>
+            <input asp-for="Valor" class="form-control limpa autocomplete="off" />
+            <span asp-validation-for="Valor" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="Unidade" class="control-label"></label>
+            <input asp-for="Unidade" class="form-control  limpa" autocomplete="off">
+            <span asp-validation-for="Unidade" class="text-danger"></span>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-10">
+        <div class="form-group">
+            <label asp-for="NomeFornecedor" class="control-label"></label>
+            <input asp-for="NomeFornecedor" class="form-control  limpa" autocomplete="off" />
+            <span asp-validation-for="NomeFornecedor" class="text-danger"></span>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-block btn-success"><i class="glyphicon glyphicon-floppy-disk"></i> Gravar</button>
+    </div>
+
+    <div class="col-md-2">
+        <a asp-area="Cadastros" onclick="return LigaAguarde()" asp-controller="Produtos" asp-action="Index" class="btn btn-block btn-warning"><i class="glyphicon glyphicon-arrow-left"></i> Voltar</a>
+    </div>
+</div>

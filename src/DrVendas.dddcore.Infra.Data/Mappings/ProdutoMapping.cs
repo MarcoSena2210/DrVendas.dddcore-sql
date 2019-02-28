@@ -30,6 +30,9 @@ namespace DrVendas.dddcore.Infra.Data.Mappings
                 .HasColumnType("varchar(2)")
                 .IsRequired();
 
+            builder.Property(p => p.Foto)
+               .HasColumnType("varbinary(max)");
+               
             builder.HasOne(p => p.Fornecedor)
                .WithMany(f => f.Produtos)
                .HasForeignKey(p => p.FornecedorId);

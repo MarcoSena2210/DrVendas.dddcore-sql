@@ -23,7 +23,9 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
             appClientes = _appClientes;
             appShared = _appShared;
         }
-        
+
+
+        #region Listar
         [Route("Cadastro-Clientes-Listagem")]
         public IActionResult Index()
         {
@@ -37,8 +39,9 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
             var settings = new JsonSerializerSettings();
             return Json(lista, settings);
         }
-
-        #region INCLUIR-CLIENTE
+        #endregion Listar
+        
+        #region  Incluir-Cliente
         [Route("Cadastro-Clientes-Incluir")]
         public IActionResult Incluir()
         {
@@ -61,9 +64,9 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
             }
              return View(model);
         }
-        #endregion FIM-INCLUIR-CLIENTE
+        #endregion FIM-Incluir-Cliente
 
-        #region ALTERAR-CLIENTE
+        #region Alterar-Cliente
 
         [Route("Cadastro-Clientes-Alterar")]
         public IActionResult Alterar(int id)
@@ -87,18 +90,18 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
             }
             return View(model);
         }
-        #endregion FIM-ALTERAR-CLIENTE
+        #endregion FIM-Alterar-Cliente
 
-        #region DETALHAR-CLIENTE
+        #region Detalhar-Cliente
         [Route("Cadastro-Clientes-Detalhar")]
         public IActionResult Detalhar(int id)
         {
             var model = appClientes.ObterPorId(id);
             return View(model);
         }
-        #endregion FIM-DETALHAR-CLIENTE
+        #endregion FIM- Detalhar-Cliente
 
-        #region EXCLUIR-CLIENTE
+        #region  Excluir-Cliente
         [Route("Cadastro-Clientes-Excluir")]
         public IActionResult Excluir(int id)
         {
@@ -121,7 +124,7 @@ namespace Vendas.dddcore.Site.Areas.Cadastros.Controllers
             }
             return RedirectToAction("Index");
         }
-        #endregion FIM-EXCLUIR-CLIENTE
+        #endregion FIM-Excluir-Cliente
 
     }
 }

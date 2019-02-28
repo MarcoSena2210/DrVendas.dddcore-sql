@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DrVendas.dddcore.Infra.Data.Migrations
 {
-    public partial class Inicio : Migration
+    public partial class criacao_inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -58,7 +58,9 @@ namespace DrVendas.dddcore.Infra.Data.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DataPedido = table.Column<DateTime>(type: "DateTime", nullable: false),
                     DataEntrega = table.Column<DateTime>(type: "DateTime", nullable: true),
-                    ClienteId = table.Column<int>(nullable: false)
+                    ClienteId = table.Column<int>(nullable: false),
+                    Observacao = table.Column<string>(type: "varchar(4000)", nullable: true),
+                    ValorTotalPedido = table.Column<decimal>(type: "decimal(10,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -82,6 +84,7 @@ namespace DrVendas.dddcore.Infra.Data.Migrations
                     Descricao = table.Column<string>(type: "varchar(150)", nullable: false),
                     Valor = table.Column<decimal>(type: "decimal", nullable: false),
                     Unidade = table.Column<string>(type: "varchar(2)", nullable: false),
+                    Foto = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     FornecedorId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -102,8 +105,8 @@ namespace DrVendas.dddcore.Infra.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Qtd = table.Column<int>(nullable: false),
-                    ValorItem = table.Column<decimal>(type: "decimal", nullable: false),
-                    ValorTotalItem = table.Column<decimal>(type: "decimal", nullable: false),
+                    ValorItem = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    ValorTotalItem = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
                     PedidoId = table.Column<int>(nullable: false),
                     ProdutoId = table.Column<int>(nullable: false)
                 },

@@ -114,8 +114,7 @@ namespace DrVendas.dddcore.Domain.Services.AgregacaoPedidos
         {
             return repopedidos.ObterPorId(id);
         }
-        #endregion Consultar Pedidos 
-
+    
         public PedidoDTO ObterPorIdCompleto(int id)
         {
             return repopedidos.ObterPorIdCompleto(id);
@@ -125,6 +124,8 @@ namespace DrVendas.dddcore.Domain.Services.AgregacaoPedidos
         {
             return repopedidos.ObterListagemPedidos();
         }
+        #endregion Consultar Pedidos 
+
 
         public void Dispose()
         {

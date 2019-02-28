@@ -194,7 +194,7 @@ namespace DrVendas.dddcore.Infra.Data.Repository.AgregacaoPedido
         public IEnumerable<ItemPedido> ObterItemPedidoProdutoEspecifico(int idproduto)
         {
             StringBuilder query = new StringBuilder();
-            query.AppendLine(@"SELECT * FROM itempedido WHERE PRODUTO.ID=@uIDPRODUTO");
+            query.AppendLine(@"SELECT * FROM itempedido WHERE PRODUTOID=@uIDPRODUTO");
             var itempedido = Db.Database.GetDbConnection().Query<ItemPedido>(query.ToString(), new { @uIDPRODUTO = idproduto });
             return itempedido;
         }

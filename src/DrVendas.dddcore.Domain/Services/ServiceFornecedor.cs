@@ -19,6 +19,29 @@ namespace DrVendas.dddcore.Domain.Services
             serviceproduto = _serviceproduto;
         }
 
+        #region consulta fornecedores
+        public IEnumerable<Fornecedor> ObterTodos()
+        {
+            return repofornecedor.ObterTodos();
+        }
+
+        public Fornecedor ObterPorId(int id)
+        {
+            return repofornecedor.ObterPorId(id);
+        }
+
+        public Fornecedor ObterPorApelido(string apelido)
+        {
+            return repofornecedor.ObterPorApelido(apelido);
+        }
+
+        public Fornecedor ObterPorCpfCnpj(string cpfcnpj)
+        {
+            return repofornecedor.ObterPorCpfCnpj(cpfcnpj);
+        }
+
+        #endregion consulta fornecedores
+
         #region Adicionar fornecedores
         public Fornecedor Adicionar(Fornecedor fornecedor)
         {
@@ -108,29 +131,6 @@ namespace DrVendas.dddcore.Domain.Services
         }
 
         #endregion Remover fornecedores
-
-        #region consulta fornecedores
-        public IEnumerable<Fornecedor> ObterTodos()
-        {
-            return repofornecedor.ObterTodos();
-        }
-
-        public Fornecedor ObterPorId(int id)
-        {
-            return repofornecedor.ObterPorId(id);
-        }
-
-        public Fornecedor ObterPorApelido(string apelido)
-        {
-            return repofornecedor.ObterPorApelido(apelido);
-        }
-
-        public Fornecedor ObterPorCpfCnpj(string cpfcnpj)
-        {
-            return repofornecedor.ObterPorCpfCnpj(cpfcnpj);
-        }
-
-        #endregion consulta fornecedores
 
         public void Dispose()
         {

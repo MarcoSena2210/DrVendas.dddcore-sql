@@ -13,6 +13,8 @@ namespace DrVendas.dddcore.Domain.Entidades
         public string Descricao { get; set; }
         public decimal Valor { get; set; }
         public string Unidade { get; set; }
+        public byte [] Foto { get; set; }
+
         public int FornecedorId { get; set; }
 
         /* Propriedades de navegação-Um Produto pertence a um fornecedor
@@ -73,8 +75,8 @@ namespace DrVendas.dddcore.Domain.Entidades
 
         private void UnidadeDeveSerValida()
         {
-            var listunidade = new List<string> { "KL", "GR", "MT", "CM", "QT" };
-            if (!listunidade.Contains(Unidade)) ListaErros.Add("Unidade deve ser KL, GR, MT, CM ou QT!");
+            var listunidade = new List<string> { "CM","G ","KG", "M", "UN" };
+            if (!listunidade.Contains(Unidade)) ListaErros.Add("Unidade deve ser CM, G , KG, M ou UN !");
         }
 
         private void FornecedorDeveSerPreenchido()
