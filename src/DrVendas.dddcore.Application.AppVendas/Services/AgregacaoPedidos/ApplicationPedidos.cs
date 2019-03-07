@@ -3,6 +3,7 @@ using DrVendas.dddcore.Application.AppVendas.Interfaces.AgregracaoPedidos;
 using DrVendas.dddcore.Application.AppVendas.ViewModels.AgregracaoPedidos;
 using DrVendas.dddcore.Domain.Entidades.AgregacaoPedido;
 using DrVendas.dddcore.Domain.Interfaces.Services.AgregacaoPedidos;
+using DrVendas.dddcore.Infra.Data.Interfaces;
 using System;
 using System.Collections.Generic;
 
@@ -12,18 +13,33 @@ namespace DrVendas.dddcore.Application.AppVendas.Services.AgregacaoPedidos
     {
         private readonly IServicePedido servicepedidos;
         private readonly IMapper mapper;
+        private readonly IUnitOfWork uow;
 
         public ApplicationPedidos(IServicePedido _servicepedidos,
-                                  IMapper _mapper)
+                                  IMapper _mapper, IUnitOfWork _uow)
         {
             servicepedidos = _servicepedidos;
             mapper = _mapper;
+            uow = _uow;
         }
 
 
         public PedidoViewModel Adicionar(PedidoViewModel pedido)
         {
-            return mapper.Map<PedidoViewModel>(servicepedidos.Adicionar(mapper.Map<Pedido>(pedido)));
+            var pedidoresult = mapper.Map<Pedido>(pedido);
+
+            List<ItemPedido> ListaItem = new List<ItemPedido>();
+            ItemPedido item = new ItemPedido();
+        //    item.Qtd = Convert.ToInt32(pedido.Qtd);  //Acho que falta criar esse campos
+            item.ProdutoId = pedido.ProdutoId;
+
+            ListaItem.Add(item);
+            pedidoresult.ItensPedidos = ListaItem;
+            pedido = mapper.Map<PedidoViewModel>(servicepedidos.Adicionar(pedidoresult));
+            uow.Commit(pedido.ListaErros);
+
+            return pedido;
+        //    return mapper.Map<PedidoViewModel>(servicepedidos.Adicionar(mapper.Map<Pedido>(pedido)));
         }
 
         public PedidoViewModel Atualizar(PedidoViewModel pedido)

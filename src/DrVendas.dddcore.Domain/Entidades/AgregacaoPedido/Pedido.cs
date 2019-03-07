@@ -1,4 +1,4 @@
-﻿using DrVendas.dddcore.Domain.Shared.Entidades;
+using DrVendas.dddcore.Domain.Shared.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +34,7 @@ namespace DrVendas.dddcore.Domain.Entidades.AgregacaoPedido
 
         private void DataPedidoDeveSerSuperiorOuIgualADataDoDia()
         {
-            if (DataPedido < DateTime.Today) ListaErros.Add("Data do pedido não pode ser superior a data de hoje!");
+            if (DataPedido < DateTime.Today) ListaErros.Add("Data do pedido não pode ser inferior a data de hoje!");
         }
 
         private void DataEntregaDeveSerSuperiorOuIgualDataPedido()
