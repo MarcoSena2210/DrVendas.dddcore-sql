@@ -67,6 +67,7 @@ namespace Vendas.dddcore.Site.Areas.Pedidos.Controllers
             ViewBag.ListaClientes = new SelectList(appClientes.ObterTodos(), "Id", "Nome", "-- Selecione --");
             ViewBag.ListaProdutos = new SelectList(appProdutos.ObterTodos(), "Id", "Nome", "-- Selecione --");
 
+           
 
             if (!ModelState.IsValid) return View();  //verifica se passou por todas validações  ou model
             var pedido = appPedidos.Adicionar(model);

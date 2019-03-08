@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace DrVendas.dddcore.Application.AppVendas.ViewModels.AgregracaoPedidos
 {
@@ -27,7 +25,7 @@ namespace DrVendas.dddcore.Application.AppVendas.ViewModels.AgregracaoPedidos
          //    public string TotalProdutos { get; set; } retirado para seguir oa aula
 
         [Required(ErrorMessage = "Selecione um cliente")]
-        public int IdCliente { get; set; }
+        public int ClienteId { get; set; }
 
 
         //public int QtdTotalProdutos { get; set; }

@@ -39,10 +39,10 @@
                             <div class="col-md-12">
                                 <div class="form-group col-lg-08 col-md-08 col-sm-08 col-xs-08">
                                     <label class="control-label">Cliente</label>
-                                    <select autocomplete="off" asp-for="IdCliente" asp-items="@ViewBag.ListaClientes" class="form-control">
+                                    <select autocomplete="off" asp-for="ClienteId" asp-items="@ViewBag.ListaClientes" class="form-control">
                                         <option value="">-- Selecione --</option>
                                     </select>
-                                    <span asp-validation-for="IdCliente" class="text-danger"></span>
+                                    <span asp-validation-for="ClienteId" class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
@@ -80,9 +80,7 @@
                             </div>
                         </div>
 
-
-
-
+                        
                         <div class="row">
                             <div class="col-md-2">
                                 <button type="submit" class="btn btn-block btn-success"><i class="glyphicon glyphicon-floppy-disk"></i> Gravar</button>

@@ -30,8 +30,9 @@ namespace DrVendas.dddcore.Application.AppVendas.Services.AgregacaoPedidos
 
             List<ItemPedido> ListaItem = new List<ItemPedido>();
             ItemPedido item = new ItemPedido();
-        //    item.Qtd = Convert.ToInt32(pedido.Qtd);  //Acho que falta criar esse campos
+            item.Qtd = Convert.ToInt32(pedido.QtdProdutos);  //Acho que falta criar esse campos
             item.ProdutoId = pedido.ProdutoId;
+            
 
             ListaItem.Add(item);
             pedidoresult.ItensPedidos = ListaItem;

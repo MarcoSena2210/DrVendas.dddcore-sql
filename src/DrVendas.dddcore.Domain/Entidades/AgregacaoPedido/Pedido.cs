@@ -39,7 +39,7 @@ namespace DrVendas.dddcore.Domain.Entidades.AgregacaoPedido
 
         private void DataEntregaDeveSerSuperiorOuIgualDataPedido()
         {
-            if (DataEntrega != null && DataEntrega < DataPedido) ListaErros.Add("Data da entrega deve ser superior a data do pedido");
+            if (DataEntrega != null && DataEntrega < DataPedido) ListaErros.Add("Data da entrega deve ser superior ou igual a data do pedido");
         }
 
         private void ObservacaoDeveTerUmTamanhoLimite()
